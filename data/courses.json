@@ -1,0 +1,15 @@
+{
+  "platformTitle": "Driver Learning Platform",
+  "subtitle": "Structured learning with spaced repetition for developers, engineers, and architects.",
+  "courses": [
+    {
+      "slug": "web-application-security",
+      "title": "Web Application Security",
+      "category": "Web Security",
+      "description": "Build durable understanding of common security risks in modern web applications, with short lessons and spaced review.",
+      "cardCount": 8,
+      "lessonCount": 5,
+      "estimatedMinutes": 20
+    }
+  ]
+}

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Review Session</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="nav">
+      <a href="../">Home</a>
+      <a href="../courses/web-application-security/">Course</a>
+    </div>
+
+    <div class="hero">
+      <span class="kicker">Spaced repetition</span>
+      <h1>Review Session</h1>
+      <p>Browser-based MVP using localStorage. Later this moves to Workers + D1 for account sync and cloud persistence.</p>
+    </div>
+
+    <div class="grid two">
+      <div class="card">
+        <div class="small">Cards due today</div>
+        <div id="due-count" class="stat">0</div>
+        <div class="small">Stored on this device</div>
+      </div>
+      <div class="card">
+        <div class="small">Total cards in pilot course</div>
+        <div id="total-count" class="stat">0</div>
+        <div class="small">Web Application Security starter deck</div>
+      </div>
+    </div>
+
+    <div class="card" id="empty-state">
+      <h2>No cards due right now</h2>
+      <p>You are caught up on this device. You can still reset the demo deck to test the workflow again.</p>
+      <div class="actions">
+        <button class="button secondary" id="reset-btn">Reset demo progress</button>
+      </div>
+    </div>
+
+    <div class="card hidden" id="review-card">
+      <p class="small"><span id="card-lesson"></span></p>
+      <div class="question" id="card-prompt"></div>
+      <div class="choice-list hidden" id="choices"></div>
+      <div class="answer hidden" id="answer-box">
+        <h3>Answer</h3>
+        <p id="card-answer"></p>
+        <p class="small" id="card-explanation"></p>
+      </div>
+      <div class="actions">
+        <button class="button secondary" id="show-answer-btn">Show answer</button>
+        <button class="button again hidden" data-grade="again">Again</button>
+        <button class="button hard hidden" data-grade="hard">Hard</button>
+        <button class="button good hidden" data-grade="good">Good</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+const STORAGE_KEY = 'driver-learning-progress-v1';
+let course = null;
+let progress = null;
+let queue = [];
+let current = null;
+let answeredChoice = false;
+
+function todayKey() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+function addDays(days) {
+  const d = new Date();
+  d.setDate(d.getDate() + days);
+  return d.toISOString().slice(0, 10);
+}
+
+function defaultProgress(cards) {
+  const state = {};
+  cards.forEach(card => {
+    state[card.id] = { due: todayKey(), interval: 0, reps: 0, lastGrade: null };
+  });
+  return state;
+}
+
+function loadProgress(cards) {
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if (!saved) return defaultProgress(cards);
+  try {
+    const parsed = JSON.parse(saved);
+    cards.forEach(card => {
+      if (!parsed[card.id]) parsed[card.id] = { due: todayKey(), interval: 0, reps: 0, lastGrade: null };
+    });
+    return parsed;
+  } catch {
+    return defaultProgress(cards);
+  }
+}
+
+function saveProgress() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+}
+
+function buildQueue() {
+  const today = todayKey();
+  queue = course.cards.filter(card => (progress[card.id]?.due || today) <= today);
+}
+
+function updateStats() {
+  document.getElementById('total-count').textContent = String(course.cards.length);
+  document.getElementById('due-count').textContent = String(queue.length);
+}
+
+function renderCard() {
+  const emptyState = document.getElementById('empty-state');
+  const reviewCard = document.getElementById('review-card');
+  const answerBox = document.getElementById('answer-box');
+  const choices = document.getElementById('choices');
+  answeredChoice = false;
+
+  if (!queue.length) {
+    emptyState.classList.remove('hidden');
+    reviewCard.classList.add('hidden');
+    return;
+  }
+
+  emptyState.classList.add('hidden');
+  reviewCard.classList.remove('hidden');
+  current = queue[0];
+
+  document.getElementById('card-lesson').textContent = current.lesson;
+  document.getElementById('card-prompt').textContent = current.prompt;
+  document.getElementById('card-answer').textContent = current.answer;
+  document.getElementById('card-explanation').textContent = current.explanation || '';
+  answerBox.classList.add('hidden');
+  choices.innerHTML = '';
+  choices.classList.add('hidden');
+
+  document.getElementById('show-answer-btn').classList.remove('hidden');
+  document.querySelectorAll('[data-grade]').forEach(btn => btn.classList.add('hidden'));
+
+  if (current.type === 'mcq') {
+    choices.classList.remove('hidden');
+    current.choices.forEach((choice, idx) => {
+      const btn = document.createElement('button');
+      btn.className = 'choice';
+      btn.textContent = choice;
+      btn.onclick = () => {
+        if (answeredChoice) return;
+        answeredChoice = true;
+        if (idx === current.correctIndex) {
+          btn.classList.add('correct');
+        } else {
+          btn.classList.add('incorrect');
+          choices.children[current.correctIndex].classList.add('correct');
+        }
+        revealAnswer();
+      };
+      choices.appendChild(btn);
+    });
+  }
+}
+
+function revealAnswer() {
+  document.getElementById('answer-box').classList.remove('hidden');
+  document.getElementById('show-answer-btn').classList.add('hidden');
+  document.querySelectorAll('[data-grade]').forEach(btn => btn.classList.remove('hidden'));
+}
+
+function schedule(cardId, grade) {
+  const record = progress[cardId] || { interval: 0, reps: 0, lastGrade: null };
+  let interval;
+  if (grade === 'again') {
+    interval = 0;
+    record.reps = 0;
+    record.due = todayKey();
+  } else if (grade === 'hard') {
+    interval = Math.max(1, record.interval || 1);
+    record.reps += 1;
+    record.due = addDays(interval);
+  } else {
+    // good
+    interval = record.interval === 0 ? 1 : record.interval === 1 ? 3 : Math.ceil(record.interval * 2);
+    record.reps += 1;
+    record.due = addDays(interval);
+  }
+  record.interval = interval;
+  record.lastGrade = grade;
+  progress[cardId] = record;
+  saveProgress();
+}
+
+async function init() {
+  const res = await fetch('../data/web-application-security.json');
+  course = await res.json();
+  progress = loadProgress(course.cards);
+  buildQueue();
+  updateStats();
+  renderCard();
+
+  document.getElementById('show-answer-btn').onclick = revealAnswer;
+  document.querySelectorAll('[data-grade]').forEach(btn => {
+    btn.onclick = () => {
+      schedule(current.id, btn.dataset.grade);
+      queue.shift();
+      updateStats();
+      renderCard();
+    };
+  });
+
+  document.getElementById('reset-btn').onclick = () => {
+    progress = defaultProgress(course.cards);
+    saveProgress();
+    buildQueue();
+    updateStats();
+    renderCard();
+  };
+}
+init();
+</script>
+</body>
+</html>

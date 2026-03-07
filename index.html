@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Driver Learning Platform</title>
+  <link rel="stylesheet" href="./assets/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="hero">
+      <span class="kicker">Free public developer learning</span>
+      <h1 id="platform-title">Driver Learning Platform</h1>
+      <p id="platform-subtitle">Structured learning with spaced repetition for developers, engineers, and architects.</p>
+    </div>
+
+    <div class="card">
+      <h2>Courses</h2>
+      <div id="courses" class="grid two"></div>
+    </div>
+
+    <div class="card">
+      <h2>Review System</h2>
+      <p>Run a daily browser-based spaced repetition session. Your progress is stored locally for now, which keeps the first public version simple and friction-free.</p>
+      <div class="actions">
+        <a class="button" href="./review/">Start today’s review session</a>
+      </div>
+      <p class="footer">Next phase: cloud sync, Worker API, and D1-backed progress storage.</p>
+    </div>
+  </div>
+
+<script>
+async function init() {
+  const res = await fetch('./data/courses.json');
+  const data = await res.json();
+  document.getElementById('platform-title').textContent = data.platformTitle;
+  document.getElementById('platform-subtitle').textContent = data.subtitle;
+
+  const wrapper = document.getElementById('courses');
+  data.courses.forEach(course => {
+    const el = document.createElement('div');
+    el.className = 'card';
+    el.innerHTML = `
+      <span class="pill">${course.category}</span>
+      <h3>${course.title}</h3>
+      <p>${course.description}</p>
+      <p class="meta">${course.lessonCount} lessons • ${course.cardCount} review cards • ~${course.estimatedMinutes} min starter track</p>
+      <div class="actions">
+        <a class="button" href="./courses/${course.slug}/">Open course</a>
+      </div>
+    `;
+    wrapper.appendChild(el);
+  });
+}
+init();
+</script>
+</body>
+</html>
