@@ -4,76 +4,59 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Web Application Security</title>
-  <link rel="stylesheet" href="../../assets/styles.css" />
+  <link rel="stylesheet" href="/assets/styles.css" />
 </head>
 <body>
-  <div class="container">
-    <div class="nav">
-      <a href="../../">Home</a>
-      <a href="../../review/">Review</a>
-    </div>
+  <main class="container">
+    <nav class="breadcrumbs">
+      <a href="/">Home</a>
+      <span>Course</span>
+    </nav>
 
-    <div class="hero">
-      <span class="kicker">Pilot course</span>
-      <h1 id="course-title">Web Application Security</h1>
-      <p id="course-description"></p>
-    </div>
+    <p class="eyebrow">WEB SECURITY</p>
+    <h1 id="course-title">Loading course...</h1>
+    <p id="course-description"></p>
 
-    <div class="card">
-      <h2>Overview</h2>
-      <div id="overview"></div>
-      <div class="actions">
-        <a class="button" href="../../review/?course=web-application-security">Review this course</a>
-      </div>
-    </div>
+    <section class="card">
+      <h2>Lessons</h2>
+      <div id="lesson-list" class="stack"></div>
+    </section>
 
-    <div class="grid two">
-      <div class="card">
-        <h2>Lessons</h2>
-        <ul id="lessons" class="clean topic-list"></ul>
-      </div>
+    <section class="card">
+      <h2>Review</h2>
+      <p>Use spaced repetition to retain the core security ideas from this course.</p>
+      <a class="button" href="/review/">Go to review</a>
+    </section>
+  </main>
 
-      <div class="card">
-        <h2>Course details</h2>
-        <div id="details"></div>
-        <div class="sep"></div>
-        <h3>Why this pilot matters</h3>
-        <p>This module proves the platform model: concise lessons, usable review prompts, and spaced repetition that can later be expanded into cloud-backed accounts and premium tracks.</p>
-      </div>
-    </div>
-  </div>
+  <script>
+    async function loadCourse() {
+      const res = await fetch('/data/web-application-security.json');
+      const course = await res.json();
 
-<script>
-async function init() {
-  const res = await fetch('../../data/web-application-security.json');
-  const course = await res.json();
+      document.getElementById('course-title').textContent = course.title;
+      document.getElementById('course-description').textContent = course.description;
 
-  document.getElementById('course-title').textContent = course.title;
-  document.getElementById('course-description').textContent = course.description;
+      const lessonList = document.getElementById('lesson-list');
 
-  const overview = document.getElementById('overview');
-  course.overview.forEach(p => {
-    const el = document.createElement('p');
-    el.textContent = p;
-    overview.appendChild(el);
-  });
+      course.lessons.forEach((lesson, index) => {
+        const item = document.createElement('article');
+        item.className = 'lesson-card';
+        item.innerHTML = `
+          <h3>Lesson ${index + 1}: ${lesson.title}</h3>
+          <p>${lesson.summary}</p>
+          <a class="button secondary" href="/lesson.html?course=${course.slug}&lesson=${lesson.id}">
+            Open lesson
+          </a>
+        `;
+        lessonList.appendChild(item);
+      });
+    }
 
-  const lessons = document.getElementById('lessons');
-  course.lessons.forEach((lesson, idx) => {
-    const li = document.createElement('li');
-    li.innerHTML = `<strong>${idx + 1}. ${lesson.title}</strong><br><span class="small">${lesson.summary}</span>`;
-    lessons.appendChild(li);
-  });
-
-  const details = document.getElementById('details');
-  const tagSet = [...new Set(course.cards.flatMap(c => c.tags || []))].slice(0, 8);
-  details.innerHTML = `
-    <p><span class="badge">${course.category}</span><span class="badge">${course.cards.length} cards</span><span class="badge">${course.lessons.length} lessons</span></p>
-    <p class="meta">Starter review deck includes recall prompts on validation, SQL injection, XSS, sessions, and password hashing.</p>
-    <p>${tagSet.map(t => `<span class="pill">${t}</span>`).join(' ')}</p>
-  `;
-}
-init();
-</script>
+    loadCourse().catch(err => {
+      console.error(err);
+      document.getElementById('course-title').textContent = 'Could not load course';
+    });
+  </script>
 </body>
 </html>
