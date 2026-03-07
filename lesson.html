@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lesson</title>
+  <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body>
+  <main class="container">
+    <nav class="breadcrumbs">
+      <a href="/">Home</a>
+      <a href="/courses/web-application-security/">Course</a>
+      <span>Lesson</span>
+    </nav>
+
+    <p class="eyebrow">ACTIVE LEARNING</p>
+    <h1 id="lesson-title">Loading lesson...</h1>
+    <p id="lesson-summary"></p>
+
+    <section class="card">
+      <h2>Teach</h2>
+      <div id="lesson-content" class="stack"></div>
+    </section>
+
+    <section class="card">
+      <h2>Practice</h2>
+      <div id="practice-area" class="stack"></div>
+    </section>
+
+    <section class="card">
+      <h2>Next Step</h2>
+      <p>After practice, reinforce the concept with spaced repetition.</p>
+      <a class="button" href="/review/">Go to review</a>
+    </section>
+  </main>
+
+  <script>
+    function getParams() {
+      const params = new URLSearchParams(window.location.search);
+      return {
+        course: params.get('course'),
+        lesson: params.get('lesson')
+      };
+    }
+
+    function renderPracticeQuestion(q, index, container) {
+      const block = document.createElement('div');
+      block.className = 'practice-question';
+
+      const optionsHtml = q.options.map((opt, i) => `
+        <button class="option-button" data-q="${index}" data-option="${i}">
+          ${opt}
+        </button>
+      `).join('');
+
+      block.innerHTML = `
+        <p class="question"><strong>Question ${index + 1}:</strong> ${q.question}</p>
+        <div class="options">${optionsHtml}</div>
+        <div class="feedback" id="feedback-${index}"></div>
+      `;
+
+      container.appendChild(block);
+    }
+
+    async function loadLesson() {
+      const { lesson } = getParams();
+      const res = await fetch('/data/web-application-security.json');
+      const course = await res.json();
+
+      const lessonData = course.lessons.find(l => l.id === lesson);
+      if (!lessonData) {
+        document.getElementById('lesson-title').textContent = 'Lesson not found';
+        return;
+      }
+
+      document.getElementById('lesson-title').textContent = lessonData.title;
+      document.getElementById('lesson-summary').textContent = lessonData.summary;
+
+      const content = document.getElementById('lesson-content');
+      lessonData.content.forEach(p => {
+        const para = document.createElement('p');
+        para.textContent = p;
+        content.appendChild(para);
+      });
+
+      const practiceArea = document.getElementById('practice-area');
+      lessonData.practice.forEach((q, index) => renderPracticeQuestion(q, index, practiceArea));
+
+      practiceArea.addEventListener('click', (e) => {
+        const btn = e.target.closest('.option-button');
+        if (!btn) return;
+
+        const qIndex = Number(btn.dataset.q);
+        const chosen = Number(btn.dataset.option);
+        const q = lessonData.practice[qIndex];
+        const feedback = document.getElementById(`feedback-${qIndex}`);
+
+        if (chosen === q.answer) {
+          feedback.innerHTML = `<p class="correct">Correct.</p><p>${q.explanation}</p>`;
+        } else {
+          feedback.innerHTML = `<p class="incorrect">Not quite.</p><p>${q.explanation}</p>`;
+        }
+      });
+    }
+
+    loadLesson().catch(err => {
+      console.error(err);
+      document.getElementById('lesson-title').textContent = 'Could not load lesson';
+    });
+  </script>
+</body>
+</html>
