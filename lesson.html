@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lesson</title>
-  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body>
   <main class="container">
     <nav class="breadcrumbs">
       <a href="/">Home</a>
-      <a href="/courses/web-application-security/">Course</a>
+      <a href="courses/web-application-security/">Course</a>
       <span>Lesson</span>
     </nav>
 
@@ -65,7 +65,7 @@
 
     async function loadLesson() {
       const { lesson } = getParams();
-      const res = await fetch('/data/web-application-security.json');
+      const res = await fetch('data/web-application-security.json');
       const course = await res.json();
 
       const lessonData = course.lessons.find(l => l.id === lesson);
