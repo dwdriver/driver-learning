@@ -2,160 +2,84 @@
   "slug": "web-application-security",
   "title": "Web Application Security",
   "category": "Web Security",
-  "description": "A compact starter course on high-interest security concepts that matter across PHP, Node, Python, Java, and cloud-hosted applications.",
-  "overview": [
-    "Security is not a switch. It is a spectrum of trade-offs between convenience, performance, and risk reduction.",
-    "The goal of this pilot module is to prove the learning platform: readable lessons, short recall prompts, and spaced repetition that actually helps memory stick.",
-    "This first version is public and free, with browser-based progress storage so you can test the experience without accounts."
-  ],
+  "description": "Build durable understanding of common security risks in modern web applications.",
   "lessons": [
     {
-      "slug": "input-validation",
+      "id": "input-validation",
       "title": "Input Validation",
-      "summary": "Treat all incoming data as untrusted until it passes the right checks.",
-      "points": [
-        "Validate on the server even if you also validate in the browser.",
-        "Check required fields for presence, length, type, and acceptable format.",
-        "Use allow-lists when you can. Reject values that do not match known-good patterns."
+      "summary": "Treat all external input as untrusted until validated.",
+      "content": [
+        "Every field, query string, header, cookie, and uploaded file should be treated as untrusted input.",
+        "Client-side validation improves usability, but server-side validation is the true security boundary.",
+        "Validation should check type, length, format, allowed values, and business rules."
+      ],
+      "practice": [
+        {
+          "type": "mcq",
+          "question": "What is the safest default assumption for user-provided data?",
+          "options": [
+            "It is probably valid",
+            "It is trusted if it came from your UI",
+            "It is untrusted until validated",
+            "It is safe if JavaScript checked it first"
+          ],
+          "answer": 2,
+          "explanation": "All external input should be treated as untrusted until validated on the server."
+        },
+        {
+          "type": "mcq",
+          "question": "Which validation boundary actually protects the application?",
+          "options": [
+            "Client-side validation",
+            "Server-side validation",
+            "Browser autofill",
+            "HTML placeholders"
+          ],
+          "answer": 1,
+          "explanation": "Client-side checks are easy to bypass. Server-side validation is the real enforcement point."
+        }
       ]
     },
     {
-      "slug": "sql-injection",
+      "id": "sql-injection",
       "title": "SQL Injection",
-      "summary": "Unsafe string building can let attackers change the meaning of database queries.",
-      "points": [
-        "Concatenating raw user input into SQL is dangerous.",
-        "Prepared statements separate data from query structure.",
-        "Validation and least-privilege database accounts reduce impact."
-      ]
-    },
-    {
-      "slug": "xss",
-      "title": "Cross-Site Scripting (XSS)",
-      "summary": "Unescaped output can cause the browser to execute attacker-controlled script.",
-      "points": [
-        "Escape output for the context where it will be rendered: HTML, attribute, URL, JavaScript, etc.",
-        "Stored XSS is especially dangerous because one bad payload can hit many users.",
-        "Content Security Policy helps, but it is not a substitute for proper output encoding."
-      ]
-    },
-    {
-      "slug": "session-security",
-      "title": "Session Security",
-      "summary": "Session identifiers must be protected like credentials.",
-      "points": [
-        "Use secure cookies and HTTPS so session identifiers are not exposed in transit.",
-        "Regenerate session identifiers after login or privilege change.",
-        "Set sensible expiration rules and invalidate sessions on logout."
-      ]
-    },
-    {
-      "slug": "password-hashing",
-      "title": "Password Hashing",
-      "summary": "Passwords should be hashed with a slow, modern algorithm rather than encrypted or stored in plain text.",
-      "points": [
-        "Use purpose-built password hashing such as bcrypt, scrypt, or Argon2.",
-        "Never store plain-text passwords.",
-        "Password reset flows must be secure too, not just the login form."
+      "summary": "Unsafe query construction allows attackers to change query logic.",
+      "content": [
+        "SQL injection happens when user input is inserted into queries without safe parameterization.",
+        "Prepared statements separate data from executable SQL logic.",
+        "Input validation helps, but parameterized queries are essential."
+      ],
+      "practice": [
+        {
+          "type": "mcq",
+          "question": "What is the primary defense against SQL injection?",
+          "options": [
+            "Long passwords",
+            "Prepared statements / parameterized queries",
+            "Hiding form fields",
+            "Using GET instead of POST"
+          ],
+          "answer": 1,
+          "explanation": "Parameterized queries prevent user input from changing SQL structure."
+        }
       ]
     }
   ],
-  "cards": [
+  "reviewCards": [
     {
-      "id": "was-001",
-      "lesson": "Input Validation",
-      "type": "short",
-      "prompt": "What is the golden rule for data received by a web application?",
-      "answer": "Treat all incoming data as untrusted or invalid until it passes the right validation checks.",
-      "explanation": "Client-side validation improves usability, but server-side validation is the real security boundary.",
-      "tags": ["validation", "basics"]
+      "lessonId": "input-validation",
+      "front": "What is the golden rule for data received by a web application?",
+      "back": "Treat all incoming data as untrusted or invalid until it passes the right validation checks."
     },
     {
-      "id": "was-002",
-      "lesson": "Input Validation",
-      "type": "mcq",
-      "prompt": "Which is safer when validating expected values for a field like account role?",
-      "choices": [
-        "Accept anything except obviously bad characters",
-        "Allow only known-good values such as admin, editor, user",
-        "Skip validation if JavaScript already checked it"
-      ],
-      "correctIndex": 1,
-      "answer": "Allow only known-good values such as admin, editor, user.",
-      "explanation": "Allow-lists are usually safer than trying to block every bad input pattern.",
-      "tags": ["validation", "allow-list"]
+      "lessonId": "input-validation",
+      "front": "Which validation boundary actually protects the application?",
+      "back": "Server-side validation."
     },
     {
-      "id": "was-003",
-      "lesson": "SQL Injection",
-      "type": "short",
-      "prompt": "What is the main defense against SQL injection in application code?",
-      "answer": "Use prepared statements or parameterized queries so user input is treated as data, not executable SQL.",
-      "explanation": "Escaping helps in some cases, but parameterized queries are the primary defense.",
-      "tags": ["sql", "injection"]
-    },
-    {
-      "id": "was-004",
-      "lesson": "SQL Injection",
-      "type": "mcq",
-      "prompt": "Why is building SQL with raw string concatenation dangerous?",
-      "choices": [
-        "It makes queries run slower on all databases",
-        "It can let attacker input alter the structure or meaning of the query",
-        "It prevents indexes from being used"
-      ],
-      "correctIndex": 1,
-      "answer": "It can let attacker input alter the structure or meaning of the query.",
-      "explanation": "The danger is not just bad data. The attacker may be able to change the logic of the query itself.",
-      "tags": ["sql", "injection"]
-    },
-    {
-      "id": "was-005",
-      "lesson": "Cross-Site Scripting (XSS)",
-      "type": "short",
-      "prompt": "What causes Cross-Site Scripting (XSS)?",
-      "answer": "XSS happens when untrusted data is sent to a browser without proper output encoding, allowing script execution in the page context.",
-      "explanation": "Validation helps, but output encoding for the correct context is the key control.",
-      "tags": ["xss", "output-encoding"]
-    },
-    {
-      "id": "was-006",
-      "lesson": "Session Security",
-      "type": "mcq",
-      "prompt": "When should a session identifier usually be regenerated?",
-      "choices": [
-        "After login or privilege change",
-        "Only when a browser closes",
-        "Only when a password is changed"
-      ],
-      "correctIndex": 0,
-      "answer": "After login or privilege change.",
-      "explanation": "This reduces the risk of session fixation and keeps privilege boundaries tighter.",
-      "tags": ["sessions", "auth"]
-    },
-    {
-      "id": "was-007",
-      "lesson": "Password Hashing",
-      "type": "short",
-      "prompt": "Why should passwords be hashed with a slow algorithm such as bcrypt or Argon2?",
-      "answer": "Slow password hashing makes large-scale brute-force and offline cracking attacks much more expensive.",
-      "explanation": "Password hashing is intentionally slower than general-purpose hashing because security matters more than raw speed here.",
-      "tags": ["passwords", "hashing"]
-    },
-    {
-      "id": "was-008",
-      "lesson": "Password Hashing",
-      "type": "mcq",
-      "prompt": "Which statement is correct?",
-      "choices": [
-        "Encrypted passwords are always better than hashed passwords",
-        "Plain text passwords are acceptable if the database server is private",
-        "Password reset workflows must be secured too, not just login"
-      ],
-      "correctIndex": 2,
-      "answer": "Password reset workflows must be secured too, not just login.",
-      "explanation": "Attackers often target the weaker recovery path instead of the stronger login path.",
-      "tags": ["passwords", "recovery"]
+      "lessonId": "sql-injection",
+      "front": "What is the primary defense against SQL injection?",
+      "back": "Prepared statements / parameterized queries."
     }
   ]
 }
