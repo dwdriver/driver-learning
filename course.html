@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Course</title>
+  <link rel="stylesheet" href="./assets/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <nav class="breadcrumbs">
+      <a href="./index.html">Home</a>
+      <span>Course</span>
+    </nav>
+
+    <div class="hero">
+      <span class="kicker" id="course-category">Course</span>
+      <h1 id="course-title">Loading course...</h1>
+      <p id="course-subtitle" class="title-note"></p>
+      <p id="course-description" class="hero-intro"></p>
+    </div>
+
+    <div class="card">
+      <h2>Course Overview</h2>
+      <p><strong>Difficulty:</strong> <span id="course-difficulty"></span></p>
+      <p><strong>Estimated Time:</strong> <span id="course-minutes"></span> minutes</p>
+      <p><strong>Lessons:</strong> <span id="course-lessons"></span></p>
+      <p><strong>Review Cards:</strong> <span id="course-cards"></span></p>
+
+      <div class="actions">
+        <a id="start-course-link" class="button" href="#">Start Course</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Lessons</h2>
+      <div id="lesson-list" class="stack"></div>
+    </div>
+
+    <div class="card">
+      <h2>Learning Path</h2>
+      <ul class="clean" id="course-path">
+        <li>Teach core concepts in small lessons</li>
+        <li>Practice immediately after each lesson</li>
+        <li>Reinforce retention through spaced review</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    function getCourseSlug() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('course');
+    }
+
+async function loadCourse() {
+
+  const slug = getCourseSlug();
+
+  const res = await fetch('./data/courses.json');
+  const data = await res.json();
+
+  const course = data.courses.find(c => c.slug === slug);
+
+  if (!course) {
+    document.getElementById('course-title').textContent = 'Course not found';
+    return;
+  }
+
+  // populate course metadata
+  document.getElementById('course-title').textContent = course.title;
+  document.getElementById('course-description').textContent = course.description;
+
+  // ==============================
+  // ADD STEP 2 CODE HERE
+  // ==============================
+
+  const lessonRes = await fetch(`./data/${slug}.json`);
+  const lessonData = await lessonRes.json();
+  
+  const lessonList = document.getElementById('lesson-list');
+
+  const startCourseLink = document.getElementById('start-course-link');
+
+  if (lessonData.lessons && lessonData.lessons.length > 0) {
+    startCourseLink.href = `./lesson.html?course=${slug}&lesson=${lessonData.lessons[0].id}`;
+  } else {
+    startCourseLink.href = '#';
+  }  
+
+  lessonData.lessons.forEach((lesson, index) => {
+      const item = document.createElement('article');
+
+      item.innerHTML = `
+        <h3>Lesson ${index + 1}: ${lesson.title}</h3>
+        <p>${lesson.summary}</p>
+        <a class="button secondary"
+           href="./lesson.html?course=${slug}&lesson=${lesson.id}">
+           Open Lesson
+        </a>
+      `;
+
+      lessonList.appendChild(item);
+  });
+
+}
+
+    loadCourse().catch(err => {
+      console.error(err);
+      document.getElementById('course-title').textContent = 'Could not load course';
+    });
+  </script>
+</body>
+</html>

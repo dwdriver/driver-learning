@@ -1,15 +1,140 @@
 {
-  "platformTitle": "Driver Learning Platform",
-  "subtitle": "Structured learning with spaced repetition for developers, engineers, and architects.",
+  "platformTitle": "Accelerated Learning with Spaced Repetition",
+  "platformSubtitle": "A lightweight serverless learning platform deployed on Cloudflare",
   "courses": [
     {
       "slug": "web-application-security",
       "title": "Web Application Security",
       "category": "Web Security",
-      "description": "Build durable understanding of common security risks in modern web applications, with short lessons and spaced review.",
-      "cardCount": 8,
-      "lessonCount": 5,
-      "estimatedMinutes": 20
+      "difficulty": "intermediate",
+      "status": "available",
+      "note": "In Progress",
+      "description": "Build durable understanding of common security risks in modern web applications.",
+      "cardCount": 12,
+      "lessonCount": 2,
+      "estimatedMinutes": 25
+    },
+    {
+      "slug": "why-spaced-repetition",
+      "title": "Why Spaced Repetition?",
+      "category": "Learning Methods",
+      "difficulty": "beginner",
+      "status": "available",
+      "note": "Demo Lesson",
+      "description": "A short demonstration of how active recall and spaced repetition accelerate learning.",
+      "cardCount": 6,
+      "lessonCount": 1,
+      "estimatedMinutes": 8
+    },
+    {
+      "slug": "python-fundamentals",
+      "title": "Python Fundamentals",
+      "category": "Programming",
+      "difficulty": "beginner",
+      "status": "coming-soon",
+      "description": "Learn Python through short concept lessons, practice, and spaced review.",
+      "cardCount": 0,
+      "lessonCount": 0,
+      "estimatedMinutes": 0
+    },
+    {
+      "slug": "php-for-web-development",
+      "title": "PHP for Web Development",
+      "category": "Programming",
+      "difficulty": "beginner",
+      "status": "coming-soon",
+      "description": "Build practical PHP skills through small lessons and reinforcement.",
+      "cardCount": 0,
+      "lessonCount": 0,
+      "estimatedMinutes": 0
+    },
+    {
+      "slug": "mysql-fundamentals",
+      "title": "MySQL Fundamentals",
+      "category": "Databases",
+      "difficulty": "beginner",
+      "status": "coming-soon",
+      "description": "Learn core MySQL concepts and query patterns through active practice.",
+      "cardCount": 0,
+      "lessonCount": 0,
+      "estimatedMinutes": 0
+    },
+    {
+      "slug": "javascript-essentials",
+      "title": "JavaScript Essentials",
+      "category": "Programming",
+      "difficulty": "beginner",
+      "status": "coming-soon",
+      "description": "Master JavaScript fundamentals with short lessons and spaced review.",
+      "cardCount": 0,
+      "lessonCount": 0,
+      "estimatedMinutes": 0
+    },
+    {
+      "slug": "apache-web-server",
+      "title": "Apache Web Server",
+      "category": "Web Infrastructure",
+      "difficulty": "beginner",
+      "status": "coming-soon",
+      "description": "Learn Apache configuration, virtual hosts, routing, and deployment basics.",
+      "cardCount": 0,
+      "lessonCount": 0,
+      "estimatedMinutes": 0
+    },
+    {
+      "slug": "generative-ai-foundations",
+      "title": "Generative AI Foundations",
+      "category": "Artificial Intelligence",
+      "difficulty": "beginner",
+      "status": "coming-soon",
+      "description": "Build a practical foundation in modern generative AI concepts and workflows.",
+      "cardCount": 0,
+      "lessonCount": 0,
+      "estimatedMinutes": 0
+    },
+    {
+      "slug": "prompt-engineering",
+      "title": "Prompt Engineering",
+      "category": "Artificial Intelligence",
+      "difficulty": "beginner",
+      "status": "coming-soon",
+      "description": "Learn how to structure prompts for clearer, more reliable AI responses.",
+      "cardCount": 0,
+      "lessonCount": 0,
+      "estimatedMinutes": 0
+    },
+    {
+      "slug": "embeddings-and-vector-databases",
+      "title": "Embeddings and Vector Databases",
+      "category": "Artificial Intelligence",
+      "difficulty": "intermediate",
+      "status": "coming-soon",
+      "description": "Understand embeddings, semantic search, and vector-based retrieval.",
+      "cardCount": 0,
+      "lessonCount": 0,
+      "estimatedMinutes": 0
+    },
+    {
+      "slug": "retrieval-augmented-generation",
+      "title": "Retrieval-Augmented Generation",
+      "category": "Artificial Intelligence",
+      "difficulty": "intermediate",
+      "status": "coming-soon",
+      "description": "Learn how retrieval pipelines improve the accuracy of AI systems.",
+      "cardCount": 0,
+      "lessonCount": 0,
+      "estimatedMinutes": 0
+    },
+    {
+      "slug": "ai-agents",
+      "title": "AI Agents",
+      "category": "Artificial Intelligence",
+      "difficulty": "intermediate",
+      "status": "coming-soon",
+      "description": "Explore agent workflows, tool use, memory, and multi-step reasoning systems.",
+      "cardCount": 0,
+      "lessonCount": 0,
+      "estimatedMinutes": 0
     }
   ]
 }
