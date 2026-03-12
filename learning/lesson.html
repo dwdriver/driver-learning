@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lesson</title>
   <link rel="stylesheet" href="assets/styles.css" />
 </head>
+
 <body>
   <main class="container">
     <nav class="breadcrumbs">
@@ -64,11 +66,13 @@
     }
 
     async function loadLesson() {
-      const { lesson } = getParams();
-      const res = await fetch('data/web-application-security.json');
-      const course = await res.json();
+      const { course, lesson } = getParams();
 
-      const lessonData = course.lessons.find(l => l.id === lesson);
+      const res = await fetch(`./data/${course}.json`);
+      const courseData = await res.json();
+
+      const lessonData = courseData.lessons.find(l => l.id === lesson);
+
       if (!lessonData) {
         document.getElementById('lesson-title').textContent = 'Lesson not found';
         return;
@@ -110,4 +114,5 @@
     });
   </script>
 </body>
+
 </html>

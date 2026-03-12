@@ -1,0 +1,109 @@
+{
+    "slug": "why-spaced-repetition",
+    "title": "Why Spaced Repetition",
+    "description": "Understand why spaced repetition dramatically improves learning, retention, and long-term mastery.",
+    "lessons": [
+        {
+            "id": "forgetting-curve",
+            "title": "The Forgetting Curve",
+            "summary": "Without review, most learning fades quickly.",
+            "content": [
+                "Human memory decays rapidly unless information is revisited.",
+                "Most learners forget the majority of new information within days.",
+                "Spaced repetition interrupts this decay by reviewing material at increasing intervals."
+            ],
+            "practice": [
+                {
+                    "question": "What typically happens to new learning without review?",
+                    "options": [
+                        "It becomes permanent immediately",
+                        "It fades quickly",
+                        "It strengthens on its own",
+                        "It turns into mastery automatically"
+                    ],
+                    "answer": 1,
+                    "explanation": "Without review, most new learning fades quickly."
+                },
+                {
+                    "question": "What does spaced repetition interrupt?",
+                    "options": [
+                        "Neural growth",
+                        "The need for practice",
+                        "Memory decay over time",
+                        "The ability to recall"
+                    ],
+                    "answer": 2,
+                    "explanation": "Spaced repetition interrupts the normal decay of memory by revisiting material at increasing intervals."
+                }
+            ]
+        },
+        {
+            "id": "active-recall",
+            "title": "Active Recall",
+            "summary": "Retrieving information strengthens memory.",
+            "content": [
+                "Learning is strengthened when the brain retrieves information rather than rereading it.",
+                "Flashcards and questions force retrieval.",
+                "This retrieval process strengthens neural pathways."
+            ],
+            "practice": [
+                {
+                    "question": "Which is more effective for strengthening memory?",
+                    "options": [
+                        "Reading notes passively",
+                        "Retrieving information from memory",
+                        "Highlighting everything",
+                        "Skimming the material once"
+                    ],
+                    "answer": 1,
+                    "explanation": "Active recall works because retrieving information strengthens memory more than passive review."
+                },
+                {
+                    "question": "Why are flashcards useful?",
+                    "options": [
+                        "They decorate your notes",
+                        "They remove the need for review",
+                        "They force retrieval practice",
+                        "They make every subject easy"
+                    ],
+                    "answer": 2,
+                    "explanation": "Flashcards are effective because they force retrieval, which strengthens memory."
+                }
+            ]
+        },
+        {
+            "id": "spacing-effect",
+            "title": "The Spacing Effect",
+            "summary": "Spacing reviews improves long-term retention.",
+            "content": [
+                "Reviewing information over time is more effective than cramming.",
+                "Each successful recall strengthens long-term memory.",
+                "Spaced repetition schedules reviews to maximize retention."
+            ],
+            "practice": [
+                {
+                    "question": "What is generally more effective than cramming?",
+                    "options": [
+                        "Studying once for a long time",
+                        "Reviewing over time",
+                        "Skipping practice",
+                        "Reading without testing"
+                    ],
+                    "answer": 1,
+                    "explanation": "The spacing effect shows that reviewing over time is more effective than cramming."
+                },
+                {
+                    "question": "What does each successful recall strengthen?",
+                    "options": [
+                        "Short-term confusion",
+                        "Long-term memory",
+                        "The need to cram",
+                        "Passive familiarity only"
+                    ],
+                    "answer": 1,
+                    "explanation": "Each successful recall strengthens long-term memory."
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Application Security</title>
+    <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+
+<body>
+    <main class="container">
+        <nav class="breadcrumbs">
+            <a href="/">Home</a>
+            <span>Course</span>
+        </nav>
+
+        <p class="eyebrow">LEARNING FUNDAMENTALS</p>
+        <h1 id="course-title">Loading course...</h1>
+        <p id="course-description"></p>
+
+        <section class="card">
+            <h2>Lessons</h2>
+            <div id="lesson-list" class="stack"></div>
+        </section>
+
+        <section class="card">
+            <h2>Review</h2>
+            <p>Use spaced repetition to reinforce the key ideas from this course.</p>
+            <a class="button" href="/review/">Go to review</a>
+        </section>
+    </main>
+
+    <script>
+        async function loadCourse() {
+            const res = await fetch('/learning/data/why-spaced-repetition.json');
+            const course = await res.json();
+
+            document.getElementById('course-title').textContent = course.title;
+            document.getElementById('course-description').textContent = course.description;
+
+            const lessonList = document.getElementById('lesson-list');
+
+            course.lessons.forEach((lesson, index) => {
+                const item = document.createElement('article');
+                item.className = 'lesson-card';
+                item.innerHTML = `
+          <h3>Lesson ${index + 1}: ${lesson.title}</h3>
+          <p>${lesson.summary}</p>
+          <a class="button secondary" href="/learning/lesson.html?course=${course.slug}&lesson=${lesson.id}">
+            Open lesson
+          </a>
+        `;
+                lessonList.appendChild(item);
+            });
+        }
+
+        loadCourse().catch(err => {
+            console.error(err);
+            document.getElementById('course-title').textContent = 'Could not load course';
+        });
+    </script>
+</body>
+
+</html>

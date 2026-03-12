@@ -3,6 +3,18 @@
   "platformSubtitle": "A lightweight serverless learning platform deployed on Cloudflare",
   "courses": [
     {
+      "slug": "why-spaced-repetition",
+      "title": "Why Spaced Repetition?",
+      "category": "Learning Methods",
+      "difficulty": "beginner",
+      "status": "available",
+      "note": "Start Here",
+      "description": "Learn how spaced repetition dramatically improves retention and mastery.",
+      "cardCount": 6,
+      "lessonCount": 1,
+      "estimatedMinutes": 8
+    },
+    {
       "slug": "web-application-security",
       "title": "Web Application Security",
       "category": "Web Security",
@@ -13,18 +25,6 @@
       "cardCount": 12,
       "lessonCount": 2,
       "estimatedMinutes": 25
-    },
-    {
-      "slug": "why-spaced-repetition",
-      "title": "Why Spaced Repetition?",
-      "category": "Learning Methods",
-      "difficulty": "beginner",
-      "status": "available",
-      "note": "Demo Lesson",
-      "description": "A short demonstration of how active recall and spaced repetition accelerate learning.",
-      "cardCount": 6,
-      "lessonCount": 1,
-      "estimatedMinutes": 8
     },
     {
       "slug": "python-fundamentals",
