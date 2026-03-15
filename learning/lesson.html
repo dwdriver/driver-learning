@@ -9,33 +9,48 @@
 </head>
 
 <body>
-  <main class="container">
-    <nav class="breadcrumbs">
-      <a href="/">Home</a>
-      <a href="courses/web-application-security/">Course</a>
-      <span>Lesson</span>
-    </nav>
 
-    <p class="eyebrow">ACTIVE LEARNING</p>
-    <h1 id="lesson-title">Loading lesson...</h1>
-    <p id="lesson-summary"></p>
+  <header class="site-topbar">
+    <div class="site-wrap">
+      <a class="site-brand" href="../">David Driver</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="../">Home</a>
+        <a href="./" class="current">Learning</a>
+        <a href="../#projects">Projects</a>
+        <a href="../contact/">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-    <section class="card">
-      <h2>Teach</h2>
-      <div id="lesson-content" class="stack"></div>
-    </section>
+  <div class="lesson-overlay">
+    <div class="lesson-window">
 
-    <section class="card">
-      <h2>Practice</h2>
-      <div id="practice-area" class="stack"></div>
-    </section>
+      <div class="lesson-titlebar">
+        <div class="window-controls-left">
+          <button id="nav-prev" type="button">←</button>
+          <button id="nav-next" type="button">→</button>
+        </div>
 
-    <section class="card">
-      <h2>Next Step</h2>
-      <p>After practice, reinforce the concept with spaced repetition.</p>
-      <a class="button" href="/learning/review/">Go to review</a>
-    </section>
-  </main>
+        <div class="lesson-title">
+          <span id="lesson-title"></span>
+          <div id="lesson-progress" class="lesson-progress"></div>
+        </div>
+
+        <div class="window-controls-right">
+          <button id="close-lesson" type="button" aria-label="Return to lesson menu">Lesson menu: ✕</button>
+        </div>
+      </div>
+
+      <div class="lesson-body">
+        <div id="practice-panels-root"></div>
+
+        <div class="lesson-next">
+          <button id="next-step" type="button">Next →</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
 
   <script>
     function getParams() {
@@ -46,23 +61,154 @@
       };
     }
 
-    function renderPracticeQuestion(q, index, container) {
-      const block = document.createElement('div');
-      block.className = 'practice-question';
+    let panels = [];
+    let currentPanelIndex = 0;
+    let currentLessonData = null;
+    let currentCourseData = null;
+    let currentLessonIndex = -1;
+    let answeredSteps = {};
+    let backPromptCount = 0;
 
-      const optionsHtml = q.options.map((opt, i) => `
-        <button class="option-button" data-q="${index}" data-option="${i}">
-          ${opt}
-        </button>
-      `).join('');
+    function isMcqStep(index) {
+      if (!currentLessonData || !currentLessonData.steps[index]) return false;
+      return currentLessonData.steps[index].type === 'mcq';
+    }
 
-      block.innerHTML = `
-        <p class="question"><strong>Question ${index + 1}:</strong> ${q.question}</p>
-        <div class="options">${optionsHtml}</div>
-        <div class="feedback" id="feedback-${index}"></div>
-      `;
+    function isFinalStep(index) {
+      if (!currentLessonData || !currentLessonData.steps[index]) return false;
+      return currentLessonData.steps[index].type === 'next';
+    }
 
-      container.appendChild(block);
+    function buildStepPanel(step, index) {
+      const panel = document.createElement('div');
+      panel.className = 'lesson-panel';
+      panel.id = `panel-step-${index}`;
+
+      if (step.type === 'teach') {
+        panel.innerHTML = `
+          <div class="question-card">
+            <p class="lesson-text">${step.text}</p>
+          </div>
+        `;
+      }
+
+      if (step.type === 'mcq') {
+        const optionsHtml = step.options.map((opt, i) => `
+          <button class="option-button"
+                  data-step="${index}"
+                  data-option="${i}"
+                  type="button">
+            ${opt}
+          </button>
+        `).join('');
+
+        panel.innerHTML = `
+          <div class="question-card">
+            <h3>${step.question}</h3>
+            <div class="options">${optionsHtml}</div>
+            <div class="feedback" id="feedback-${index}"></div>
+          </div>
+        `;
+      }
+
+      if (step.type === 'next') {
+        panel.innerHTML = `
+          <div class="question-card">
+            <h2>${step.title}</h2>
+            <p>${step.text}</p>
+          </div>
+        `;
+      }
+
+      return panel;
+    }
+
+    function updateNextButton() {
+      const nextBtn = document.getElementById('next-step');
+
+      if (!currentLessonData || !currentLessonData.steps[currentPanelIndex]) return;
+
+      const step = currentLessonData.steps[currentPanelIndex];
+
+      if (step.type === 'mcq') {
+        nextBtn.textContent = 'Next →';
+        nextBtn.disabled = !answeredSteps[currentPanelIndex];
+        return;
+      }
+
+      if (step.type === 'next') {
+        const hasNextLesson = currentLessonIndex < currentCourseData.lessons.length - 1;
+        nextBtn.textContent = hasNextLesson ? 'Next lesson →' : 'Go to review →';
+        nextBtn.disabled = false;
+        return;
+      }
+
+      nextBtn.textContent = 'Next →';
+      nextBtn.disabled = false;
+    }
+
+    function showPanel(index) {
+      if (!panels.length) return;
+
+      panels.forEach(panel => panel.classList.remove('active'));
+      panels[index].classList.add('active');
+      currentPanelIndex = index;
+
+      const progress = document.getElementById('lesson-progress');
+      const total = currentLessonData.steps.length;
+      progress.textContent = `Step ${index + 1} of ${total}`;
+
+      updateNextButton();
+    }
+
+    function goNext() {
+      if (!panels.length) return;
+
+      if (isMcqStep(currentPanelIndex) && !answeredSteps[currentPanelIndex]) {
+        return;
+      }
+
+      if (currentPanelIndex < panels.length - 1) {
+        backPromptCount = 0;
+        showPanel(currentPanelIndex + 1);
+        return;
+      }
+
+      const { course } = getParams();
+      const hasNextLesson = currentLessonIndex < currentCourseData.lessons.length - 1;
+
+      if (hasNextLesson) {
+        const nextLesson = currentCourseData.lessons[currentLessonIndex + 1];
+        window.location.href = `./lesson.html?course=${course}&lesson=${nextLesson.id}`;
+      } else {
+        window.location.href = `./review/index.html?course=${course}`;
+      }
+    }
+
+    function goPrev() {
+      if (!panels.length) return;
+
+      if (isMcqStep(currentPanelIndex) && !answeredSteps[currentPanelIndex]) {
+        backPromptCount += 1;
+
+        if (backPromptCount === 1) {
+          alert("C'mon, give it a try. Guessing is okay — it's part of the Spaced Repetition learning process.");
+          return;
+        }
+
+        if (backPromptCount === 2) {
+          alert("Please?");
+          return;
+        }
+      }
+
+      backPromptCount = 0;
+
+      if (currentPanelIndex > 0) {
+        showPanel(currentPanelIndex - 1);
+      } else {
+        history.back();
+      }
     }
 
     async function loadLesson() {
@@ -72,41 +218,74 @@
       const courseData = await res.json();
 
       const lessonData = courseData.lessons.find(l => l.id === lesson);
+      const lessonIndex = courseData.lessons.findIndex(l => l.id === lesson);
 
       if (!lessonData) {
         document.getElementById('lesson-title').textContent = 'Lesson not found';
         return;
       }
 
-      document.getElementById('lesson-title').textContent = lessonData.title;
-      document.getElementById('lesson-summary').textContent = lessonData.summary;
+      currentCourseData = courseData;
+      currentLessonData = lessonData;
+      currentLessonIndex = lessonIndex;
+      answeredSteps = {};
+      backPromptCount = 0;
 
-      const content = document.getElementById('lesson-content');
-      lessonData.content.forEach(p => {
-        const para = document.createElement('p');
-        para.textContent = p;
-        content.appendChild(para);
+      document.getElementById('lesson-title').textContent = lessonData.title;
+
+      const practicePanelsRoot = document.getElementById('practice-panels-root');
+      practicePanelsRoot.innerHTML = '';
+
+      lessonData.steps.forEach((step, index) => {
+        const panel = buildStepPanel(step, index);
+        practicePanelsRoot.appendChild(panel);
       });
 
-      const practiceArea = document.getElementById('practice-area');
-      lessonData.practice.forEach((q, index) => renderPracticeQuestion(q, index, practiceArea));
+      panels = Array.from(
+        document.querySelectorAll('#practice-panels-root .lesson-panel')
+      );
 
-      practiceArea.addEventListener('click', (e) => {
+      showPanel(0);
+
+      practicePanelsRoot.onclick = (e) => {
         const btn = e.target.closest('.option-button');
         if (!btn) return;
 
-        const qIndex = Number(btn.dataset.q);
+        const stepIndex = Number(btn.dataset.step);
         const chosen = Number(btn.dataset.option);
-        const q = lessonData.practice[qIndex];
-        const feedback = document.getElementById(`feedback-${qIndex}`);
 
-        if (chosen === q.answer) {
-          feedback.innerHTML = `<p class="correct">Correct.</p><p>${q.explanation}</p>`;
+        const step = currentLessonData.steps[stepIndex];
+        const feedback = document.getElementById(`feedback-${stepIndex}`);
+
+        if (!step || step.type !== 'mcq') return;
+
+        if (chosen === step.answer) {
+          feedback.innerHTML = `<p class="correct">Correct.</p><p>${step.explanation}</p>`;
         } else {
-          feedback.innerHTML = `<p class="incorrect">Not quite.</p><p>${q.explanation}</p>`;
+          feedback.innerHTML = `<p class="incorrect">Not quite.</p><p>${step.explanation}</p>`;
         }
-      });
+
+        answeredSteps[stepIndex] = true;
+        backPromptCount = 0;
+        updateNextButton();
+      };
     }
+
+    document.getElementById('close-lesson').onclick = () => {
+      history.back();
+    };
+
+    document.getElementById('nav-prev').onclick = () => {
+      goPrev();
+    };
+
+    document.getElementById('nav-next').onclick = () => {
+      goNext();
+    };
+
+    document.getElementById('next-step').onclick = () => {
+      goNext();
+    };
 
     loadLesson().catch(err => {
       console.error(err);

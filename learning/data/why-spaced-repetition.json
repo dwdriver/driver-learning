@@ -7,13 +7,25 @@
             "id": "forgetting-curve",
             "title": "The Forgetting Curve",
             "summary": "Without review, most learning fades quickly.",
-            "content": [
-                "Human memory decays rapidly unless information is revisited.",
-                "Most learners forget the majority of new information within days.",
-                "Spaced repetition interrupts this decay by reviewing material at increasing intervals."
-            ],
-            "practice": [
+            "steps": [
                 {
+                    "type": "teach",
+                    "text": "Without review, most learning fades quickly."
+                },
+                {
+                    "type": "teach",
+                    "text": "Human memory decays rapidly unless information is revisited."
+                },
+                {
+                    "type": "teach",
+                    "text": "Most learners forget the majority of new information within days."
+                },
+                {
+                    "type": "teach",
+                    "text": "Spaced repetition interrupts this decay by reviewing material at increasing intervals."
+                },
+                {
+                    "type": "mcq",
                     "question": "What typically happens to new learning without review?",
                     "options": [
                         "It becomes permanent immediately",
@@ -25,6 +37,7 @@
                     "explanation": "Without review, most new learning fades quickly."
                 },
                 {
+                    "type": "mcq",
                     "question": "What does spaced repetition interrupt?",
                     "options": [
                         "Neural growth",
@@ -33,7 +46,12 @@
                         "The ability to recall"
                     ],
                     "answer": 2,
-                    "explanation": "Spaced repetition interrupts the normal decay of memory by revisiting material at increasing intervals."
+                    "explanation": "Spaced repetition interrupts memory decay over time."
+                },
+                {
+                    "type": "next",
+                    "title": "Next Step",
+                    "text": "Come back to this concept after a short delay, then again later, and again tomorrow. Each successful recall strengthens long-term retention."
                 }
             ]
         },
@@ -41,33 +59,35 @@
             "id": "active-recall",
             "title": "Active Recall",
             "summary": "Retrieving information strengthens memory.",
-            "content": [
-                "Learning is strengthened when the brain retrieves information rather than rereading it.",
-                "Flashcards and questions force retrieval.",
-                "This retrieval process strengthens neural pathways."
-            ],
-            "practice": [
+            "steps": [
                 {
-                    "question": "Which is more effective for strengthening memory?",
-                    "options": [
-                        "Reading notes passively",
-                        "Retrieving information from memory",
-                        "Highlighting everything",
-                        "Skimming the material once"
-                    ],
-                    "answer": 1,
-                    "explanation": "Active recall works because retrieving information strengthens memory more than passive review."
+                    "type": "teach",
+                    "text": "Active recall means trying to retrieve information from memory rather than simply reviewing it."
                 },
                 {
-                    "question": "Why are flashcards useful?",
+                    "type": "teach",
+                    "text": "The effort of retrieving information strengthens neural connections."
+                },
+                {
+                    "type": "teach",
+                    "text": "Testing yourself is far more effective than rereading notes."
+                },
+                {
+                    "type": "mcq",
+                    "question": "Which activity best represents active recall?",
                     "options": [
-                        "They decorate your notes",
-                        "They remove the need for review",
-                        "They force retrieval practice",
-                        "They make every subject easy"
+                        "Highlighting a textbook",
+                        "Reading notes repeatedly",
+                        "Trying to answer a question from memory",
+                        "Watching the same lecture again"
                     ],
                     "answer": 2,
-                    "explanation": "Flashcards are effective because they force retrieval, which strengthens memory."
+                    "explanation": "Active recall requires retrieving the information from memory rather than reviewing it passively."
+                },
+                {
+                    "type": "next",
+                    "title": "Next Step",
+                    "text": "Combining active recall with spaced repetition produces extremely durable learning."
                 }
             ]
         },
@@ -75,33 +95,35 @@
             "id": "spacing-effect",
             "title": "The Spacing Effect",
             "summary": "Spacing reviews improves long-term retention.",
-            "content": [
-                "Reviewing information over time is more effective than cramming.",
-                "Each successful recall strengthens long-term memory.",
-                "Spaced repetition schedules reviews to maximize retention."
-            ],
-            "practice": [
+            "steps": [
                 {
-                    "question": "What is generally more effective than cramming?",
-                    "options": [
-                        "Studying once for a long time",
-                        "Reviewing over time",
-                        "Skipping practice",
-                        "Reading without testing"
-                    ],
-                    "answer": 1,
-                    "explanation": "The spacing effect shows that reviewing over time is more effective than cramming."
+                    "type": "teach",
+                    "text": "The spacing effect shows that learning is stronger when study sessions are distributed over time."
                 },
                 {
-                    "question": "What does each successful recall strengthen?",
+                    "type": "teach",
+                    "text": "Each time you successfully recall information after a delay, the memory becomes more stable."
+                },
+                {
+                    "type": "teach",
+                    "text": "Short repeated reviews spaced across days produce better retention than one long study session."
+                },
+                {
+                    "type": "mcq",
+                    "question": "What improves long-term retention the most?",
                     "options": [
-                        "Short-term confusion",
-                        "Long-term memory",
-                        "The need to cram",
-                        "Passive familiarity only"
+                        "One long study session",
+                        "Many short reviews spaced over time",
+                        "Reading the same material repeatedly",
+                        "Memorizing everything in one sitting"
                     ],
                     "answer": 1,
-                    "explanation": "Each successful recall strengthens long-term memory."
+                    "explanation": "Spacing reviews across time strengthens long-term retention."
+                },
+                {
+                    "type": "next",
+                    "title": "Course Complete",
+                    "text": "You now understand the key principles behind spaced repetition and active recall."
                 }
             ]
         }

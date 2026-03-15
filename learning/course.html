@@ -1,12 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Course</title>
   <link rel="stylesheet" href="./assets/styles.css" />
 </head>
+
 <body>
+
+  <header class="site-topbar">
+    <div class="site-wrap">
+      <a class="site-brand" href="../">David Driver</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="../">Home</a>
+        <a href="./">Learning</a>
+        <a href="../#projects">Projects</a>
+        <a href="../contact/">Contact</a>
+      </nav>
+    </div>
+  </header>
+
   <div class="container">
     <nav class="breadcrumbs">
       <a href="./index.html">Home</a>
@@ -53,45 +68,45 @@
       return params.get('course');
     }
 
-async function loadCourse() {
+    async function loadCourse() {
 
-  const slug = getCourseSlug();
+      const slug = getCourseSlug();
 
-  const res = await fetch('./data/courses.json');
-  const data = await res.json();
+      const res = await fetch('./data/courses.json');
+      const data = await res.json();
 
-  const course = data.courses.find(c => c.slug === slug);
+      const course = data.courses.find(c => c.slug === slug);
 
-  if (!course) {
-    document.getElementById('course-title').textContent = 'Course not found';
-    return;
-  }
+      if (!course) {
+        document.getElementById('course-title').textContent = 'Course not found';
+        return;
+      }
 
-  // populate course metadata
-  document.getElementById('course-title').textContent = course.title;
-  document.getElementById('course-description').textContent = course.description;
+      // populate course metadata
+      document.getElementById('course-title').textContent = course.title;
+      document.getElementById('course-description').textContent = course.description;
 
-  // ==============================
-  // ADD STEP 2 CODE HERE
-  // ==============================
+      // ==============================
+      // ADD STEP 2 CODE HERE
+      // ==============================
 
-  const lessonRes = await fetch(`./data/${slug}.json`);
-  const lessonData = await lessonRes.json();
-  
-  const lessonList = document.getElementById('lesson-list');
+      const lessonRes = await fetch(`./data/${slug}.json`);
+      const lessonData = await lessonRes.json();
 
-  const startCourseLink = document.getElementById('start-course-link');
+      const lessonList = document.getElementById('lesson-list');
 
-  if (lessonData.lessons && lessonData.lessons.length > 0) {
-    startCourseLink.href = `./lesson.html?course=${slug}&lesson=${lessonData.lessons[0].id}`;
-  } else {
-    startCourseLink.href = '#';
-  }  
+      const startCourseLink = document.getElementById('start-course-link');
 
-  lessonData.lessons.forEach((lesson, index) => {
-      const item = document.createElement('article');
+      if (lessonData.lessons && lessonData.lessons.length > 0) {
+        startCourseLink.href = `./lesson.html?course=${slug}&lesson=${lessonData.lessons[0].id}`;
+      } else {
+        startCourseLink.href = '#';
+      }
 
-      item.innerHTML = `
+      lessonData.lessons.forEach((lesson, index) => {
+        const item = document.createElement('article');
+
+        item.innerHTML = `
         <h3>Lesson ${index + 1}: ${lesson.title}</h3>
         <p>${lesson.summary}</p>
         <a class="button secondary"
@@ -100,10 +115,10 @@ async function loadCourse() {
         </a>
       `;
 
-      lessonList.appendChild(item);
-  });
+        lessonList.appendChild(item);
+      });
 
-}
+    }
 
     loadCourse().catch(err => {
       console.error(err);
@@ -111,4 +126,5 @@ async function loadCourse() {
     });
   </script>
 </body>
+
 </html>

@@ -4,14 +4,28 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Web Application Security</title>
-    <link rel="stylesheet" href="/assets/styles.css" />
+    <title>Why Spaced Repetition</title>
+    <link rel="stylesheet" href="../../assets/styles.css" />
 </head>
 
 <body>
+
+    <header class="site-topbar">
+        <div class="site-wrap">
+            <a class="site-brand" href="../../../">David Driver</a>
+            <nav class="site-nav" aria-label="Main navigation">
+                <a href="../../../">Home</a>
+                <a href="../../" class="current">Learning</a>
+                <a href="../../../#projects">Projects</a>
+                <a href="../../../contact/">Contact</a>
+            </nav>
+        </div>
+    </header>
+
     <main class="container">
         <nav class="breadcrumbs">
-            <a href="/">Home</a>
+            <a href="../../../">Home</a>
+            <a href="../../">Learning</a>
             <span>Course</span>
         </nav>
 
@@ -27,13 +41,13 @@
         <section class="card">
             <h2>Review</h2>
             <p>Use spaced repetition to reinforce the key ideas from this course.</p>
-            <a class="button" href="/learning/review/index.html">Go to review</a>
+            <a class="button" href="../../review/index.html">Go to review</a>
         </section>
     </main>
 
     <script>
         async function loadCourse() {
-            const res = await fetch('/learning/data/why-spaced-repetition.json');
+            const res = await fetch('../../data/why-spaced-repetition.json');
             const course = await res.json();
 
             document.getElementById('course-title').textContent = course.title;
@@ -47,7 +61,7 @@
                 item.innerHTML = `
           <h3>Lesson ${index + 1}: ${lesson.title}</h3>
           <p>${lesson.summary}</p>
-          <a class="button secondary" href="/learning/lesson.html?course=${course.slug}&lesson=${lesson.id}">
+          <a class="button secondary" href="../../lesson.html?course=${course.slug}&lesson=${lesson.id}">
             Open lesson
           </a>
         `;
