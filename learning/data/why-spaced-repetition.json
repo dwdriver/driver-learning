@@ -123,7 +123,138 @@
                 {
                     "type": "next",
                     "title": "Course Complete",
-                    "text": "You now understand the key principles behind spaced repetition and active recall."
+                    "text": "You now understand the key principles behind spaced repetition and active recall. Next, you will experience those ideas in a practical lesson using beginner AI concepts."
+                }
+            ]
+        },
+        {
+            "id": "what-ai-systems-are-made-of",
+            "title": "What AI Systems Are Made Of",
+            "summary": "Learn three core AI ideas while experiencing spaced repetition in action.",
+            "steps": [
+                {
+                    "type": "teach",
+                    "text": "In this lesson, you will learn three connected AI ideas: model, neural network, and training. You will also see how spaced repetition works by revisiting earlier ideas as new ones are introduced."
+                },
+                {
+                    "type": "teach",
+                    "text": "A model is a trained system that recognizes patterns in data and produces predictions or responses."
+                },
+                {
+                    "type": "fill",
+                    "prompt": "A trained system that recognizes patterns in data is called a",
+                    "answers": [
+                        "model"
+                    ],
+                    "retryPrompt": "ChatGPT is powered by a trained AI .",
+                    "retryAnswers": [
+                        "model"
+                    ]
+                },
+                {
+                    "type": "mcq",
+                    "question": "What does a model do?",
+                    "options": [
+                        "Store files",
+                        "Recognize patterns in data",
+                        "Connect servers",
+                        "Encrypt information"
+                    ],
+                    "answer": 1,
+                    "explanation": "A model recognizes patterns in data and produces predictions or responses."
+                },
+                {
+                    "type": "teach",
+                    "text": "A neural network is a type of model made of many connected units that learn patterns from data."
+                },
+                {
+                    "type": "teach",
+                    "text": "Many modern AI systems, including ChatGPT, use neural network models."
+                },
+                {
+                    "type": "fill",
+                    "prompt": "A type of model made of many connected units that learn patterns is called a",
+                    "answers": [
+                        "neural network"
+                    ],
+                    "retryPrompt": "Many modern AI systems use a",
+                    "retryAnswers": [
+                        "neural network"
+                    ]
+                },
+                {
+                    "type": "mcq",
+                    "question": "What is a neural network?",
+                    "options": [
+                        "A type of model",
+                        "A database",
+                        "A programming language",
+                        "A cloud service"
+                    ],
+                    "answer": 0,
+                    "explanation": "A neural network is a type of model."
+                },
+                {
+                    "type": "fill",
+                    "prompt": "A neural network is a type of",
+                    "answers": [
+                        "model"
+                    ],
+                    "retryPrompt": "Model is the broader term. A neural network is one type of",
+                    "retryAnswers": [
+                        "model"
+                    ]
+                },
+                {
+                    "type": "teach",
+                    "text": "Training is the process where a model learns patterns by adjusting itself using large amounts of data."
+                },
+                {
+                    "type": "teach",
+                    "text": "During training, the neural network improves its ability to recognize patterns."
+                },
+                {
+                    "type": "fill",
+                    "prompt": "The process where a model learns patterns from data is called",
+                    "answers": [
+                        "training"
+                    ],
+                    "retryPrompt": "Before a model becomes useful, it usually goes through",
+                    "retryAnswers": [
+                        "training"
+                    ]
+                },
+                {
+                    "type": "mcq",
+                    "question": "What happens during training?",
+                    "options": [
+                        "The model learns patterns from data",
+                        "The model searches the internet",
+                        "The model compresses files",
+                        "The model connects servers"
+                    ],
+                    "answer": 0,
+                    "explanation": "During training, the model learns patterns from data."
+                },
+                {
+                    "type": "fill",
+                    "prompt": "A neural network becomes a useful model through",
+                    "answers": [
+                        "training"
+                    ],
+                    "retryPrompt": "The process that helps a model learn from data is called",
+                    "retryAnswers": [
+                        "training"
+                    ]
+                },
+                {
+                    "type": "teach",
+                    "text": "Notice what just happened: earlier terms appeared again as new ideas were introduced. That is spaced repetition in action."
+                },
+                {
+                    "type": "next",
+                    "title": "Next Step",
+                    "text": "In the next lesson, you will learn how people interact with AI systems through prompts, tokens, and context windows."
                 }
             ]
         }

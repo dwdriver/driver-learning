@@ -69,9 +69,21 @@
     let answeredSteps = {};
     let backPromptCount = 0;
 
+    function normalizeAnswer(value) {
+      return String(value || '')
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g, ' ');
+    }
+
     function isMcqStep(index) {
       if (!currentLessonData || !currentLessonData.steps[index]) return false;
       return currentLessonData.steps[index].type === 'mcq';
+    }
+
+    function isFillStep(index) {
+      if (!currentLessonData || !currentLessonData.steps[index]) return false;
+      return currentLessonData.steps[index].type === 'fill';
     }
 
     function isFinalStep(index) {
@@ -111,6 +123,48 @@
         `;
       }
 
+      if (step.type === 'fill') {
+        const beforeText = step.before || step.prompt || '';
+        const afterText = step.after || '';
+
+        panel.innerHTML = `
+          <div class="question-card">
+            <h3 class="fill-line">
+              <span>${beforeText}</span>
+              <input
+                class="text-answer inline-answer"
+                size="${(step.answers && step.answers[0]) ? step.answers[0].length + 1 : 12}"
+                id="input-${index}"
+                type="text"
+                autocomplete="off"
+                spellcheck="false"
+              />
+              <span>${afterText}</span>
+            </h3>
+            <button
+              class="check-answer-button"
+              data-step="${index}"
+              type="button">
+              Check Answer
+            </button>
+            <div class="feedback" id="feedback-${index}"></div>
+          </div>
+        `;
+        setTimeout(() => {
+          const input = document.getElementById(`input-${index}`);
+          if (input) {
+            input.addEventListener('keydown', (e) => {
+              if (e.key === 'Enter') {
+                const btn = document.querySelector(
+                  `[data-step="${index}"].check-answer-button`
+                );
+                if (btn) btn.click();
+              }
+            });
+          }
+        });
+      }
+
       if (step.type === 'next') {
         panel.innerHTML = `
           <div class="question-card">
@@ -130,7 +184,7 @@
 
       const step = currentLessonData.steps[currentPanelIndex];
 
-      if (step.type === 'mcq') {
+      if (step.type === 'mcq' || step.type === 'fill') {
         nextBtn.textContent = 'Next →';
         nextBtn.disabled = !answeredSteps[currentPanelIndex];
         return;
@@ -164,7 +218,7 @@
     function goNext() {
       if (!panels.length) return;
 
-      if (isMcqStep(currentPanelIndex) && !answeredSteps[currentPanelIndex]) {
+      if ((isMcqStep(currentPanelIndex) || isFillStep(currentPanelIndex)) && !answeredSteps[currentPanelIndex]) {
         return;
       }
 
@@ -188,16 +242,16 @@
     function goPrev() {
       if (!panels.length) return;
 
-      if (isMcqStep(currentPanelIndex) && !answeredSteps[currentPanelIndex]) {
+      if ((isMcqStep(currentPanelIndex) || isFillStep(currentPanelIndex)) && !answeredSteps[currentPanelIndex]) {
         backPromptCount += 1;
 
         if (backPromptCount === 1) {
-          alert("C'mon, give it a try. Guessing is okay — it's part of the Spaced Repetition learning process.");
+          alert("Wait! Don't go back yet - try guessing first. Guessing reinforces 'active recall', a key part of the spaced-repetition learning process.");
           return;
         }
 
         if (backPromptCount === 2) {
-          alert("Please?");
+          alert("Are you sure? There's no penalty for guessing. You can turn this feature off, but guessing first improves learning");
           return;
         }
       }
@@ -248,50 +302,64 @@
       showPanel(0);
 
       practicePanelsRoot.onclick = (e) => {
-        const btn = e.target.closest('.option-button');
-        if (!btn) return;
+        const optionBtn = e.target.closest('.option-button');
+        if (optionBtn) {
+          const stepIndex = Number(optionBtn.dataset.step);
+          const chosen = Number(optionBtn.dataset.option);
 
-        const stepIndex = Number(btn.dataset.step);
-        const chosen = Number(btn.dataset.option);
+          const step = currentLessonData.steps[stepIndex];
+          const feedback = document.getElementById(`feedback-${stepIndex}`);
 
-        const step = currentLessonData.steps[stepIndex];
-        const feedback = document.getElementById(`feedback-${stepIndex}`);
+          if (!step || step.type !== 'mcq') return;
 
-        if (!step || step.type !== 'mcq') return;
+          if (chosen === step.answer) {
+            feedback.innerHTML = `<p class="correct">Correct.</p><p>${step.explanation}</p>`;
+          } else {
+            feedback.innerHTML = `<p class="incorrect">Not quite.</p><p>${step.explanation}</p>`;
+          }
 
-        if (chosen === step.answer) {
-          feedback.innerHTML = `<p class="correct">Correct.</p><p>${step.explanation}</p>`;
-        } else {
-          feedback.innerHTML = `<p class="incorrect">Not quite.</p><p>${step.explanation}</p>`;
+          answeredSteps[stepIndex] = true;
+          backPromptCount = 0;
+          updateNextButton();
+          return;
         }
 
-        answeredSteps[stepIndex] = true;
-        backPromptCount = 0;
-        updateNextButton();
+        const fillBtn = e.target.closest('.check-answer-button');
+        if (fillBtn) {
+          const stepIndex = Number(fillBtn.dataset.step);
+          const step = currentLessonData.steps[stepIndex];
+          const input = document.getElementById(`input-${stepIndex}`);
+          const feedback = document.getElementById(`feedback-${stepIndex}`);
+
+          if (!step || step.type !== 'fill' || !input || !feedback) return;
+
+          const guess = normalizeAnswer(input.value);
+          const acceptedAnswers = Array.isArray(step.answers) ? step.answers : [];
+          const isCorrect = acceptedAnswers.some(answer => normalizeAnswer(answer) === guess);
+
+          if (isCorrect) {
+            feedback.innerHTML = `<p class="correct">Correct.</p>`;
+          } else {
+            feedback.innerHTML = `<p class="incorrect">Not quite.</p><p>Answer: ${acceptedAnswers[0] || ''}</p>`;
+          }
+
+          answeredSteps[stepIndex] = true;
+          backPromptCount = 0;
+          updateNextButton();
+        }
       };
     }
 
-    document.getElementById('close-lesson').onclick = () => {
-      history.back();
-    };
-
-    document.getElementById('nav-prev').onclick = () => {
-      goPrev();
-    };
-
-    document.getElementById('nav-next').onclick = () => {
-      goNext();
-    };
-
-    document.getElementById('next-step').onclick = () => {
-      goNext();
-    };
-
-    loadLesson().catch(err => {
-      console.error(err);
-      document.getElementById('lesson-title').textContent = 'Could not load lesson';
+    document.getElementById('next-step').addEventListener('click', goNext);
+    document.getElementById('nav-next').addEventListener('click', goNext);
+    document.getElementById('nav-prev').addEventListener('click', goPrev);
+    document.getElementById('close-lesson').addEventListener('click', () => {
+      window.location.href = './';
     });
+
+    loadLesson();
   </script>
+
 </body>
 
 </html>

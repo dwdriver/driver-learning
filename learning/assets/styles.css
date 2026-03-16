@@ -277,6 +277,27 @@ ul.clean li {
   line-height: 1.5
 }
 
+.lesson-progress {
+  font-size: 12px;
+  color: #9ca3af;
+  margin-top: 4px;
+}
+
+.fill-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  line-height: 1.7;
+}
+
+.inline-answer {
+  min-width: 6rem;
+  max-width: 12rem;
+  padding: 0.35rem 0.5rem;
+  font: inherit;
+}
+
 .lesson-text {
   font-size: 1.1rem;
   line-height: 1.7;
@@ -504,6 +525,8 @@ ul.clean li {
   font-size: 16px;
   cursor: pointer;
   padding: 4px 8px;
+  border-radius: 4px;
+  color: #1f2937;
 }
 
 .window-controls-left button:hover,
