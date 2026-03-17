@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Accelerated Learning with Spaced Repetition</title>
+  <title>Course Catalog</title>
   <link rel="stylesheet" href="./assets/styles.css" />
 </head>
 
@@ -27,11 +27,11 @@
       <span class="kicker">Interactive Learning Platform</span>
 
       <h1 id="platform-title">
-        Accelerated Learning with Spaced Repetition
+        Course Catalog
       </h1>
 
       <p id="platform-subtitle" class="title-note">
-        A lightweight serverless learning platform deployed on Cloudflare
+        Short lessons, active recall, and spaced repetition for durable understanding.
       </p>
 
       <p class="hero-intro">
@@ -47,7 +47,7 @@
         Each course is delivered in short concept lessons followed by practice
         questions and spaced review.
       </p>
-      <div id="courses" class="grid two"></div>
+      <div id="courses" class="course catalog"></div>
     </div>
 
     <div class="card">
@@ -68,58 +68,110 @@
       </p>
     </div>
   </div>
-
   <script>
+    function formatStatusLabel(course) {
+      if (course.status === 'available') return 'Start Course';
+      if (course.status === 'in-progress') return 'In Progress';
+      return 'Coming Soon';
+    }
+
+    function formatMeta(course) {
+      const parts = [];
+
+      if (course.lessonCount && course.lessonCount > 0) {
+        parts.push(`Topics: ${course.lessonCount}`);
+      }
+
+      if (course.estimatedMinutes && course.estimatedMinutes > 0) {
+        parts.push(`Time: ~${course.estimatedMinutes} min`);
+      }
+
+      return parts.join(' • ');
+    }
+
+    function buildCourseRow(course) {
+      const row = document.createElement('div');
+      row.className = 'course-row';
+
+      const title = document.createElement('div');
+      title.className = 'course-title';
+      title.innerHTML = `<strong>${course.title}</strong>`;
+
+      const description = document.createElement('div');
+      description.className = 'course-description';
+      description.textContent = course.description;
+
+      const meta = document.createElement('div');
+      meta.className = 'course-meta';
+
+      const metaText = formatMeta(course);
+      const actionLabel = formatStatusLabel(course);
+
+      if (course.status === 'available') {
+        meta.innerHTML = `
+          ${metaText ? `${metaText} • ` : ''}
+          <a class="course-link" href="./course.html?course=${course.slug}">${actionLabel}</a>
+        `;
+      } else {
+        meta.innerHTML = `
+          ${metaText ? `${metaText} • ` : ''}
+          <span class="course-status">${actionLabel}</span>
+        `;
+      }
+
+      row.appendChild(title);
+      row.appendChild(description);
+      row.appendChild(meta);
+
+      return row;
+    }
+
     async function init() {
       const res = await fetch('./data/courses.json');
       const data = await res.json();
+
       document.getElementById('platform-title').textContent = data.platformTitle;
-      document.getElementById('platform-subtitle').textContent = data.subtitle;
+      document.getElementById('platform-subtitle').textContent = data.platformSubtitle;
 
       const wrapper = document.getElementById('courses');
+      wrapper.innerHTML = '';
 
-      data.courses.sort((a, b) => (a.status === "available" ? -1 : 1));
+      const categoryOrder = [
+        'Learning Methods',
+        'Security',
+        'Artificial Intelligence',
+        'Languages',
+        'Mainframe Modernization'
+      ];
+
+      const grouped = {};
 
       data.courses.forEach(course => {
-        const el = document.createElement('div');
-        el.className = 'card';
+        if (!grouped[course.category]) grouped[course.category] = [];
+        grouped[course.category].push(course);
+      });
 
-        const actionButton =
-          course.status === "available"
-            ? `<a class="button" href="./course.html?course=${course.slug}">
-            Learn + Practice
-          </a>`
-            : `<span class="button secondary disabled">
-            Coming Soon
-          </span>`;
+      categoryOrder.forEach(category => {
+        if (!grouped[category] || grouped[category].length === 0) return;
 
-        const badge =
-          course.status === "available"
-            ? `<span class="pill">${course.category}</span>`
-            : `<span class="pill muted">Coming Soon</span>`;
+        const section = document.createElement('section');
+        section.className = 'catalog-category';
 
-        el.innerHTML = `
-     ${badge}
-     <h3>${course.title}</h3>
-     <p>${course.description}</p>
+        const heading = document.createElement('h3');
+        heading.textContent = category;
+        section.appendChild(heading);
 
-     <p class="meta">
-      ${course.status === "available"
-            ? `${course.lessonCount} lessons • ${course.cardCount} review cards • ~${course.estimatedMinutes} min starter track`
-            : `Course content coming soon`
-          }
-     </p>
-       
-     <div class="actions">
-       ${actionButton}
-     </div>
-  `;
+        grouped[category].forEach(course => {
+          section.appendChild(buildCourseRow(course));
+        });
 
-        wrapper.appendChild(el);
+        wrapper.appendChild(section);
       });
     }
+
     init();
   </script>
+
 </body>
 
 </html>
