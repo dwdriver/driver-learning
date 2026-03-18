@@ -1,5 +1,5 @@
 {
-  "platformTitle": "Course Catalog",
+  "platformTitle": "Courses",
   "platformSubtitle": "Short lessons, active recall, and spaced repetition for durable understanding.",
   "courses": [
     {
@@ -37,6 +37,28 @@
       "cardCount": 0,
       "lessonCount": 2,
       "estimatedMinutes": 25
+    },
+    {
+      "slug": "ai-5-terms",
+      "title": "5 AI Terms Everyone Should Know",
+      "category": "Artificial Intelligence",
+      "description": "Learn and remember 5 core AI terms using active recall.",
+      "lessonCount": 7,
+      "cardCount": 10,
+      "estimatedMinutes": 8,
+      "status": "available"
+    },
+    {
+      "slug": "ai-acronyms",
+      "title": "AI Acronyms Everyone Should Know",
+      "category": "Artificial Intelligence",
+      "difficulty": "beginner",
+      "status": "available",
+      "note": "Start Here",
+      "description": "Learn and remembver the key AI acronyms to understand the language of AI systems, models and technolgies.",
+      "cardCount": 0,
+      "lessonCount": 5,
+      "estimatedMinutes": 10
     },
     {
       "slug": "generative-ai-foundations",

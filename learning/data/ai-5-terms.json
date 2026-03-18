@@ -1,0 +1,445 @@
+{
+    "slug": "ai-5-terms",
+    "title": "5 AI Terms Everyone Should Know",
+    "category": "Artificial Intelligence",
+    "description": "Learn and retain 5 core AI terms using active recall and spaced repetition.",
+    "lessons": [
+        {
+            "id": "intro",
+            "title": "What You'll Learn",
+            "steps": [
+                {
+                    "type": "teach",
+                    "text": "You're about to learn 5 essential AI terms using active recall."
+                },
+                {
+                    "type": "teach",
+                    "text": "First you'll see each term and practice recalling it right away. Then you'll take a final recall check to see how much you retained."
+                },
+                {
+                    "type": "next",
+                    "title": "Start",
+                    "text": "Let's begin with the first term."
+                }
+            ]
+        },
+        {
+            "id": "model",
+            "title": "Model",
+            "steps": [
+                {
+                    "type": "teach",
+                    "text": "A model is a system trained to recognize patterns and generate output based on data."
+                },
+                {
+                    "type": "fill",
+                    "before": "A",
+                    "after": "is a system trained to recognize patterns and generate output based on data.",
+                    "answers": [
+                        "model"
+                    ],
+                    "retryPrompt": "A trained AI system is called a ______.",
+                    "retryAnswers": [
+                        "model"
+                    ]
+                },
+                {
+                    "type": "fill",
+                    "before": "A model is trained to recognize",
+                    "after": "and generate output based on data.",
+                    "answers": [
+                        "patterns"
+                    ],
+                    "retryPrompt": "A model is trained to recognize ______.",
+                    "retryAnswers": [
+                        "patterns"
+                    ]
+                },
+                {
+                    "type": "mcq",
+                    "question": "What is a model?",
+                    "options": [
+                        "A system trained to recognize patterns and generate output",
+                        "A type of internet connection",
+                        "A collection of computer files",
+                        "A way to store passwords"
+                    ],
+                    "answer": 0,
+                    "explanation": "A model is a system trained to recognize patterns and generate output based on data."
+                },
+                {
+                    "type": "next",
+                    "title": "Next Term",
+                    "text": "Now let's learn the next term and then revisit what model means."
+                }
+            ]
+        },
+        {
+            "id": "prompt",
+            "title": "Prompt",
+            "steps": [
+                {
+                    "type": "teach",
+                    "text": "A prompt is the input you give to an AI system to guide its response."
+                },
+                {
+                    "type": "fill",
+                    "before": "The input you give to an AI system is called a",
+                    "after": ".",
+                    "answers": [
+                        "prompt"
+                    ],
+                    "retryPrompt": "A question or instruction given to AI is called a ______.",
+                    "retryAnswers": [
+                        "prompt"
+                    ]
+                },
+                {
+                    "type": "fill",
+                    "before": "A prompt is used to guide an AI system's",
+                    "after": ".",
+                    "answers": [
+                        "response"
+                    ],
+                    "retryPrompt": "A prompt helps guide the AI system's ______.",
+                    "retryAnswers": [
+                        "response"
+                    ]
+                },
+                {
+                    "type": "fill",
+                    "before": "A",
+                    "after": "is a system trained to recognize patterns and generate output based on data.",
+                    "answers": [
+                        "model"
+                    ],
+                    "retryPrompt": "A trained AI system is called a ______.",
+                    "retryAnswers": [
+                        "model"
+                    ]
+                },
+                {
+                    "type": "mcq",
+                    "question": "What does a prompt do?",
+                    "options": [
+                        "It stores training data",
+                        "It guides the AI system's response",
+                        "It replaces the model",
+                        "It turns text into images"
+                    ],
+                    "answer": 1,
+                    "explanation": "A prompt is the input you give to an AI system to guide its response."
+                },
+                {
+                    "type": "next",
+                    "title": "Next Term",
+                    "text": "Good. Now let's add another term and continue reinforcing what you've already seen."
+                }
+            ]
+        },
+        {
+            "id": "token",
+            "title": "Token",
+            "steps": [
+                {
+                    "type": "teach",
+                    "text": "A token is a small unit of text, such as a word or part of a word, used by AI models."
+                },
+                {
+                    "type": "fill",
+                    "before": "A",
+                    "after": "is a small unit of text used by AI models.",
+                    "answers": [
+                        "token"
+                    ],
+                    "retryPrompt": "A small unit of text used by AI is called a ______.",
+                    "retryAnswers": [
+                        "token"
+                    ]
+                },
+                {
+                    "type": "fill",
+                    "before": "A token is a small unit of",
+                    "after": "used by AI models.",
+                    "answers": [
+                        "text"
+                    ],
+                    "retryPrompt": "A token is a small unit of ______.",
+                    "retryAnswers": [
+                        "text"
+                    ]
+                },
+                {
+                    "type": "fill",
+                    "before": "The input you give to an AI system is called a",
+                    "after": ".",
+                    "answers": [
+                        "prompt"
+                    ],
+                    "retryPrompt": "A question or instruction given to AI is called a ______.",
+                    "retryAnswers": [
+                        "prompt"
+                    ]
+                },
+                {
+                    "type": "mcq",
+                    "question": "Which term means a small unit of text used by AI?",
+                    "options": [
+                        "Prompt",
+                        "Token",
+                        "Model",
+                        "RAG"
+                    ],
+                    "answer": 1,
+                    "explanation": "A token is a small unit of text used by AI models."
+                },
+                {
+                    "type": "next",
+                    "title": "Next Term",
+                    "text": "Now let's add the term most people hear often when they use ChatGPT or Claude."
+                }
+            ]
+        },
+        {
+            "id": "llm",
+            "title": "LLM",
+            "steps": [
+                {
+                    "type": "teach",
+                    "text": "An LLM, or Large Language Model, is an AI trained on massive amounts of text to generate language."
+                },
+                {
+                    "type": "fill",
+                    "before": "An",
+                    "after": "is an AI trained on massive amounts of text to generate language.",
+                    "answers": [
+                        "llm"
+                    ],
+                    "retryPrompt": "A Large Language Model is often called an ______.",
+                    "retryAnswers": [
+                        "llm"
+                    ]
+                },
+                {
+                    "type": "fill",
+                    "before": "An LLM is trained on massive amounts of",
+                    "after": "to generate language.",
+                    "answers": [
+                        "text"
+                    ],
+                    "retryPrompt": "An LLM is trained on massive amounts of ______.",
+                    "retryAnswers": [
+                        "text"
+                    ]
+                },
+                {
+                    "type": "fill",
+                    "before": "A",
+                    "after": "is a small unit of text used by AI models.",
+                    "answers": [
+                        "token"
+                    ],
+                    "retryPrompt": "A small unit of text used by AI is called a ______.",
+                    "retryAnswers": [
+                        "token"
+                    ]
+                },
+                {
+                    "type": "mcq",
+                    "question": "What does LLM stand for?",
+                    "options": [
+                        "Large Learning Method",
+                        "Language Logic Machine",
+                        "Large Language Model",
+                        "Linked Language Model"
+                    ],
+                    "answer": 2,
+                    "explanation": "LLM stands for Large Language Model."
+                },
+                {
+                    "type": "next",
+                    "title": "Final Term",
+                    "text": "One more term. Then we'll see how much you retained."
+                }
+            ]
+        },
+        {
+            "id": "rag",
+            "title": "RAG",
+            "steps": [
+                {
+                    "type": "teach",
+                    "text": "RAG, or Retrieval-Augmented Generation, combines a model with external knowledge sources to improve responses."
+                },
+                {
+                    "type": "fill",
+                    "before": "",
+                    "after": "combines a model with external knowledge sources to improve responses.",
+                    "answers": [
+                        "rag"
+                    ],
+                    "retryPrompt": "Retrieval-Augmented Generation is often shortened to ______.",
+                    "retryAnswers": [
+                        "rag"
+                    ]
+                },
+                {
+                    "type": "fill",
+                    "before": "RAG combines a model with external knowledge",
+                    "after": "to improve responses.",
+                    "answers": [
+                        "sources"
+                    ],
+                    "retryPrompt": "RAG combines a model with external knowledge ______.",
+                    "retryAnswers": [
+                        "sources"
+                    ]
+                },
+                {
+                    "type": "fill",
+                    "before": "An",
+                    "after": "is an AI trained on massive amounts of text to generate language.",
+                    "answers": [
+                        "llm"
+                    ],
+                    "retryPrompt": "A Large Language Model is often called an ______.",
+                    "retryAnswers": [
+                        "llm"
+                    ]
+                },
+                {
+                    "type": "mcq",
+                    "question": "What does RAG do?",
+                    "options": [
+                        "It turns prompts into tokens",
+                        "It combines a model with external knowledge sources",
+                        "It replaces language models",
+                        "It stores answers permanently"
+                    ],
+                    "answer": 1,
+                    "explanation": "RAG combines a model with external knowledge sources to improve responses."
+                },
+                {
+                    "type": "next",
+                    "title": "Final Recall Check",
+                    "text": "Now we're going to see how much of what you just learned you retained."
+                }
+            ]
+        },
+        {
+            "id": "final-recall-check",
+            "title": "Final Recall Check",
+            "shuffleSteps": true,
+            "steps": [
+                {
+                    "type": "mcq",
+                    "question": "What is the input you give to an AI system?",
+                    "options": [
+                        "Token",
+                        "Prompt",
+                        "Model",
+                        "RAG"
+                    ],
+                    "answer": 1,
+                    "explanation": "The input you give to an AI system is called a prompt."
+                },
+                {
+                    "type": "fill",
+                    "before": "A",
+                    "after": "is a small unit of text used by AI models.",
+                    "answers": [
+                        "token"
+                    ],
+                    "retryPrompt": "A small unit of text used by AI is called a ______.",
+                    "retryAnswers": [
+                        "token"
+                    ]
+                },
+                {
+                    "type": "mcq",
+                    "question": "Which term refers to an AI trained on massive amounts of text to generate language?",
+                    "options": [
+                        "Model",
+                        "LLM",
+                        "Prompt",
+                        "RAG"
+                    ],
+                    "answer": 1,
+                    "explanation": "An LLM is trained on massive amounts of text to generate language."
+                },
+                {
+                    "type": "fill",
+                    "before": "A model is trained to recognize",
+                    "after": "and generate output based on data.",
+                    "answers": [
+                        "patterns"
+                    ],
+                    "retryPrompt": "A model is trained to recognize ______.",
+                    "retryAnswers": [
+                        "patterns"
+                    ]
+                },
+                {
+                    "type": "mcq",
+                    "question": "Which term combines a model with external knowledge sources?",
+                    "options": [
+                        "RAG",
+                        "Token",
+                        "Prompt",
+                        "Model"
+                    ],
+                    "answer": 0,
+                    "explanation": "RAG combines a model with external knowledge sources to improve responses."
+                },
+                {
+                    "type": "fill",
+                    "before": "The input you give to an AI system is called a",
+                    "after": ".",
+                    "answers": [
+                        "prompt"
+                    ],
+                    "retryPrompt": "A question or instruction given to AI is called a ______.",
+                    "retryAnswers": [
+                        "prompt"
+                    ]
+                },
+                {
+                    "type": "mcq",
+                    "question": "What is a model?",
+                    "options": [
+                        "A system trained to recognize patterns and generate output",
+                        "A way to break text into tokens",
+                        "A list of external documents",
+                        "A command typed into a browser"
+                    ],
+                    "answer": 0,
+                    "explanation": "A model is a system trained to recognize patterns and generate output based on data."
+                },
+                {
+                    "type": "next",
+                    "title": "Complete",
+                    "text": "Nice work. You just used active recall to learn 5 AI terms and then tested what you retained."
+                }
+            ]
+        },
+        {
+            "id": "close",
+            "title": "What To Do Next",
+            "steps": [
+                {
+                    "type": "teach",
+                    "text": "Let these terms sit overnight, then come back and take the recall check again."
+                },
+                {
+                    "type": "teach",
+                    "text": "You may be surprised how much you remember tomorrow compared to what you would have retained from a lecture alone."
+                },
+                {
+                    "type": "next",
+                    "title": "Lesson Complete",
+                    "text": "You can return to the catalog now, or come back later and retake this lesson for more practice."
+                }
+            ]
+        }
+    ]
+}

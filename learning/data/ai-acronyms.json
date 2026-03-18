@@ -1,0 +1,331 @@
+{
+    "slug": "ai-acronyms",
+    "title": "AI Acronyms Everyone Should Know",
+    "category": "Artificial Intelligence",
+    "description": "Learn and retain 5 core AI acronyms using active recall and spaced repetition.",
+    "lessons": [
+        {
+            "id": "intro",
+            "title": "What You'll Learn",
+            "steps": [
+                {
+                    "type": "teach",
+                    "text": "You're about to learn 5 essential AI acronyms using active recall."
+                },
+                {
+                    "type": "teach",
+                    "text": "First, you'll see each acronym and practice recalling it right away. Then, you'll take a final recall check to see how much you retained."
+                },
+                {
+                    "type": "next",
+                    "title": "Start",
+                    "text": "Let's begin with the first acronym."
+                }
+            ]
+        },
+        {
+            "id": "nlp",
+            "title": "NLP (Natural Language Processing)",
+            "steps": [
+                {
+                    "type": "teach",
+                    "text": "NLP is a field of AI that focuses on the interaction between computers and human language. It enables machines to understand, interpret, and generate human language."
+                },
+                {
+                    "type": "fill",
+                    "before": "NLP is a field of AI that focuses on the interaction between computers and ________ language.",
+                    "after": "",
+                    "answers": [
+                        "human"
+                    ],
+                    "retryPrompt": "NLP deals with ________ language.",
+                    "retryAnswers": [
+                        "human"
+                    ]
+                },
+                {
+                    "type": "fill",
+                    "before": "NLP helps computers understand and generate",
+                    "after": " language.",
+                    "answers": [
+                        "human"
+                    ],
+                    "retryPrompt": "NLP helps computers understand and generate ________ language.",
+                    "retryAnswers": [
+                        "human"
+                    ]
+                },
+                {
+                    "type": "mcq",
+                    "question": "What does NLP stand for?",
+                    "options": [
+                        "Natural Language Processing",
+                        "Neural Language Pattern",
+                        "Nonlinear Learning Program",
+                        "Network Language Processing"
+                    ],
+                    "answer": 0,
+                    "explanation": "NLP stands for Natural Language Processing, which helps AI systems understand and generate human language."
+                },
+                {
+                    "type": "next",
+                    "title": "Next Term",
+                    "text": "Now let's move on to another essential AI acronym."
+                }
+            ]
+        },
+        {
+            "id": "gan",
+            "title": "GAN (Generative Adversarial Networks)",
+            "steps": [
+                {
+                    "type": "teach",
+                    "text": "GANs are deep learning models that use two neural networks—a generator and a discriminator—that work against each other to generate realistic data."
+                },
+                {
+                    "type": "fill",
+                    "before": "GANs use two neural networks, a generator and a ________.",
+                    "after": "",
+                    "answers": [
+                        "discriminator"
+                    ],
+                    "retryPrompt": "In GANs, the generator works against a ________.",
+                    "retryAnswers": [
+                        "discriminator"
+                    ]
+                },
+                {
+                    "type": "fill",
+                    "before": "The generator in a GAN creates new data, while the discriminator",
+                    "after": "assesses the authenticity of that data.",
+                    "answers": [
+                        "evaluates"
+                    ],
+                    "retryPrompt": "The discriminator in a GAN ________ the generated data for authenticity.",
+                    "retryAnswers": [
+                        "evaluates"
+                    ]
+                },
+                {
+                    "type": "mcq",
+                    "question": "What are the two main components of a GAN?",
+                    "options": [
+                        "Generator and evaluator",
+                        "Generator and discriminator",
+                        "Model and data set",
+                        "Input and output layer"
+                    ],
+                    "answer": 1,
+                    "explanation": "GANs consist of a generator and a discriminator, which work together to create realistic data."
+                },
+                {
+                    "type": "next",
+                    "title": "Next Term",
+                    "text": "Let's continue with another important AI term."
+                }
+            ]
+        },
+        {
+            "id": "rag",
+            "title": "RAG (Retrieval-Augmented Generation)",
+            "steps": [
+                {
+                    "type": "teach",
+                    "text": "RAG combines retrieval (fetching relevant data) with generation (creating outputs) to improve AI responses' accuracy and relevance."
+                },
+                {
+                    "type": "fill",
+                    "before": "RAG combines ________ with ________ to improve AI responses.",
+                    "after": "",
+                    "answers": [
+                        "retrieval",
+                        "generation"
+                    ],
+                    "retryPrompt": "RAG combines ________ with ________ to enhance response quality.",
+                    "retryAnswers": [
+                        "retrieval",
+                        "generation"
+                    ]
+                },
+                {
+                    "type": "fill",
+                    "before": "RAG uses retrieval to fetch data and generation to",
+                    "after": "create output.",
+                    "answers": [
+                        "generate"
+                    ],
+                    "retryPrompt": "RAG uses retrieval to fetch data and generation to ________ output.",
+                    "retryAnswers": [
+                        "generate"
+                    ]
+                },
+                {
+                    "type": "mcq",
+                    "question": "What is the purpose of RAG?",
+                    "options": [
+                        "To combine retrieval with AI generation for improved responses",
+                        "To store large datasets for future use",
+                        "To speed up data processing in AI",
+                        "To create training datasets"
+                    ],
+                    "answer": 0,
+                    "explanation": "RAG combines retrieval with generation to produce more accurate and relevant AI outputs."
+                },
+                {
+                    "type": "next",
+                    "title": "Next Term",
+                    "text": "Let's move on to the next essential AI acronym."
+                }
+            ]
+        },
+        {
+            "id": "xai",
+            "title": "XAI (Explainable AI)",
+            "steps": [
+                {
+                    "type": "teach",
+                    "text": "XAI refers to methods and models in AI that provide transparent and understandable explanations of AI decision-making processes."
+                },
+                {
+                    "type": "fill",
+                    "before": "XAI refers to AI systems that provide ________ explanations of decision-making.",
+                    "after": "",
+                    "answers": [
+                        "transparent"
+                    ],
+                    "retryPrompt": "XAI is all about making AI decision-making ________.",
+                    "retryAnswers": [
+                        "transparent"
+                    ]
+                },
+                {
+                    "type": "fill",
+                    "before": "XAI helps AI systems offer understandable explanations for their",
+                    "after": "decisions.",
+                    "answers": [
+                        "decisions"
+                    ],
+                    "retryPrompt": "XAI helps AI systems explain their ________.",
+                    "retryAnswers": [
+                        "decisions"
+                    ]
+                },
+                {
+                    "type": "mcq",
+                    "question": "What does XAI stand for?",
+                    "options": [
+                        "Extensive AI",
+                        "Explainable AI",
+                        "Extended AI",
+                        "Exclusive AI"
+                    ],
+                    "answer": 1,
+                    "explanation": "XAI stands for Explainable AI, which aims to make AI decisions more transparent and understandable."
+                },
+                {
+                    "type": "next",
+                    "title": "Next Term",
+                    "text": "Let's wrap up with one final AI acronym."
+                }
+            ]
+        },
+        {
+            "id": "ai-ethics",
+            "title": "AI Ethics",
+            "steps": [
+                {
+                    "type": "teach",
+                    "text": "AI Ethics is a field concerned with the ethical implications of AI technologies and how they affect individuals, society, and the environment."
+                },
+                {
+                    "type": "fill",
+                    "before": "AI Ethics is concerned with the ________ implications of AI technologies.",
+                    "after": "",
+                    "answers": [
+                        "ethical"
+                    ],
+                    "retryPrompt": "AI Ethics focuses on the ________ consequences of AI technology.",
+                    "retryAnswers": [
+                        "ethical"
+                    ]
+                },
+                {
+                    "type": "fill",
+                    "before": "AI Ethics aims to ensure AI systems are designed with fairness, transparency, and",
+                    "after": "accountability.",
+                    "answers": [
+                        "accountability"
+                    ],
+                    "retryPrompt": "AI Ethics ensures fairness, transparency, and ________ in AI systems.",
+                    "retryAnswers": [
+                        "accountability"
+                    ]
+                },
+                {
+                    "type": "mcq",
+                    "question": "What is AI Ethics about?",
+                    "options": [
+                        "Improving AI performance",
+                        "Designing AI for fairness, transparency, and accountability",
+                        "Building AI systems",
+                        "Optimizing AI for speed"
+                    ],
+                    "answer": 1,
+                    "explanation": "AI Ethics is focused on ensuring fairness, transparency, and accountability in AI systems."
+                },
+                {
+                    "type": "next",
+                    "title": "Final Recall Check",
+                    "text": "Let's check how much you retained from the acronyms you've learned."
+                }
+            ]
+        },
+        {
+            "id": "final-recall-check",
+            "title": "Final Recall Check",
+            "steps": [
+                {
+                    "type": "mcq",
+                    "question": "Which acronym stands for Explainable AI?",
+                    "options": [
+                        "LLM",
+                        "XAI",
+                        "NLP",
+                        "GAN"
+                    ],
+                    "answer": 1,
+                    "explanation": "XAI stands for Explainable AI."
+                },
+                {
+                    "type": "fill",
+                    "before": "A __________ is an AI model trained on massive amounts of text to generate language.",
+                    "after": "",
+                    "answers": [
+                        "LLM"
+                    ],
+                    "retryPrompt": "A large AI model trained on text data is called an ________.",
+                    "retryAnswers": [
+                        "LLM"
+                    ]
+                },
+                {
+                    "type": "mcq",
+                    "question": "What does GAN stand for?",
+                    "options": [
+                        "Generative Adversarial Network",
+                        "Global Artificial Network",
+                        "Generalized Automated Network",
+                        "Generative Automatic Network"
+                    ],
+                    "answer": 0,
+                    "explanation": "GAN stands for Generative Adversarial Network."
+                },
+                {
+                    "type": "next",
+                    "title": "Complete",
+                    "text": "Good job! You've completed the lesson. You can return to the catalog or take the test again for further practice."
+                }
+            ]
+        }
+    ]
+}

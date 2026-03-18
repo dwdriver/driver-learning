@@ -76,6 +76,17 @@
         .replace(/\s+/g, ' ');
     }
 
+    function shuffleArray(items) {
+      const copy = [...items];
+
+      for (let i = copy.length - 1; i > 0; i -= 1) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+
+      return copy;
+    }
+
     function isMcqStep(index) {
       if (!currentLessonData || !currentLessonData.steps[index]) return false;
       return currentLessonData.steps[index].type === 'mcq';
@@ -271,7 +282,27 @@
       const res = await fetch(`./data/${course}.json`);
       const courseData = await res.json();
 
-      const lessonData = courseData.lessons.find(l => l.id === lesson);
+      const originalLessonData = courseData.lessons.find(l => l.id === lesson);
+
+      const lessonData = originalLessonData
+        ? {
+          ...originalLessonData,
+          steps: originalLessonData.shuffleSteps
+            ? (() => {
+              const steps = [...originalLessonData.steps];
+              const lastStep = steps[steps.length - 1];
+
+              if (lastStep && lastStep.type === 'next') {
+                const shuffled = shuffleArray(steps.slice(0, -1));
+                return [...shuffled, lastStep];
+              }
+
+              return shuffleArray(steps);
+            })()
+            : [...originalLessonData.steps]
+        }
+        : null;
+
       const lessonIndex = courseData.lessons.findIndex(l => l.id === lesson);
 
       if (!lessonData) {
