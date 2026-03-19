@@ -27,18 +27,14 @@
       <span class="kicker">Interactive Learning Platform</span>
 
       <h1 id="platform-title">
+        <p id="platform-subtitle" class="title-note></>
         Course Catalog
       </h1>
 
-      <p id="platform-subtitle" class="title-note">
-        Short lessons, active recall, and spaced repetition for durable understanding.
-      </p>
-
-      <p class="hero-intro">
-        Learn faster through short lessons, active recall, and spaced review.
-        Each course focuses on small concepts reinforced through practice and
-        repetition to build durable understanding.
-      </p>
+      <p class=" hero-intro">
+          Learn faster through short lessons, active recall, and spaced repetition.
+          Each course focuses on small concepts reinforced through practice and repetition.
+        </p>
     </div>
 
     <div class="card">
@@ -47,7 +43,7 @@
         Each course is delivered in short concept lessons followed by practice
         questions and spaced review.
       </p>
-      <div id="courses" class="course catalog"></div>
+      <div id="courses" class="course-catalog"></div>
     </div>
 
     <div class="card">
@@ -131,7 +127,11 @@
       const data = await res.json();
 
       document.getElementById('platform-title').textContent = data.platformTitle;
-      document.getElementById('platform-subtitle').textContent = data.platformSubtitle;
+
+      const subtitleEl = document.getElementById('platform-subtitle');
+      if (subtitleEl) {
+        subtitleEl.textContent = data.platformSubtitle;
+      }
 
       const wrapper = document.getElementById('courses');
       wrapper.innerHTML = '';

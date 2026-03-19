@@ -33,12 +33,12 @@
                 },
                 {
                     "type": "fill",
-                    "before": "NLP is a field of AI that focuses on the interaction between computers and ________ language.",
-                    "after": "",
+                    "before": "NLP focuses on processing",
+                    "after": "language.",
                     "answers": [
                         "human"
                     ],
-                    "retryPrompt": "NLP deals with ________ language.",
+                    "retryPrompt": "NLP works with ______ language.",
                     "retryAnswers": [
                         "human"
                     ]
@@ -46,13 +46,13 @@
                 {
                     "type": "fill",
                     "before": "NLP helps computers understand and generate",
-                    "after": " language.",
+                    "after": ".",
                     "answers": [
-                        "human"
+                        "language"
                     ],
-                    "retryPrompt": "NLP helps computers understand and generate ________ language.",
+                    "retryPrompt": "NLP helps computers understand and generate ______.",
                     "retryAnswers": [
-                        "human"
+                        "language"
                     ]
                 },
                 {
@@ -80,30 +80,30 @@
             "steps": [
                 {
                     "type": "teach",
-                    "text": "GANs are deep learning models that use two neural networks—a generator and a discriminator—that work against each other to generate realistic data."
+                    "text": "GANs are deep learning models that use two neural networks—a generator and a discriminator—that compete to generate realistic data."
                 },
                 {
                     "type": "fill",
-                    "before": "GANs use two neural networks, a generator and a ________.",
-                    "after": "",
+                    "before": "GANs use a generator and a",
+                    "after": ".",
                     "answers": [
                         "discriminator"
                     ],
-                    "retryPrompt": "In GANs, the generator works against a ________.",
+                    "retryPrompt": "GANs use a generator and a ______.",
                     "retryAnswers": [
                         "discriminator"
                     ]
                 },
                 {
                     "type": "fill",
-                    "before": "The generator in a GAN creates new data, while the discriminator",
-                    "after": "assesses the authenticity of that data.",
+                    "before": "The discriminator determines if data is real or",
+                    "after": ".",
                     "answers": [
-                        "evaluates"
+                        "fake"
                     ],
-                    "retryPrompt": "The discriminator in a GAN ________ the generated data for authenticity.",
+                    "retryPrompt": "The discriminator checks if data is real or ______.",
                     "retryAnswers": [
-                        "evaluates"
+                        "fake"
                     ]
                 },
                 {
@@ -112,11 +112,11 @@
                     "options": [
                         "Generator and evaluator",
                         "Generator and discriminator",
-                        "Model and data set",
+                        "Model and dataset",
                         "Input and output layer"
                     ],
                     "answer": 1,
-                    "explanation": "GANs consist of a generator and a discriminator, which work together to create realistic data."
+                    "explanation": "GANs consist of a generator and a discriminator that work together to create realistic data."
                 },
                 {
                     "type": "next",
@@ -131,45 +131,43 @@
             "steps": [
                 {
                     "type": "teach",
-                    "text": "RAG combines retrieval (fetching relevant data) with generation (creating outputs) to improve AI responses' accuracy and relevance."
+                    "text": "RAG combines retrieval (fetching relevant data) with generation (creating outputs) to improve AI responses."
                 },
                 {
                     "type": "fill",
-                    "before": "RAG combines ________ with ________ to improve AI responses.",
-                    "after": "",
+                    "before": "RAG combines retrieval with",
+                    "after": "to improve responses.",
                     "answers": [
-                        "retrieval",
                         "generation"
                     ],
-                    "retryPrompt": "RAG combines ________ with ________ to enhance response quality.",
+                    "retryPrompt": "RAG combines retrieval with ______.",
                     "retryAnswers": [
-                        "retrieval",
                         "generation"
                     ]
                 },
                 {
                     "type": "fill",
-                    "before": "RAG uses retrieval to fetch data and generation to",
-                    "after": "create output.",
+                    "before": "RAG retrieves external",
+                    "after": "to improve answers.",
                     "answers": [
-                        "generate"
+                        "data"
                     ],
-                    "retryPrompt": "RAG uses retrieval to fetch data and generation to ________ output.",
+                    "retryPrompt": "RAG retrieves external ______.",
                     "retryAnswers": [
-                        "generate"
+                        "data"
                     ]
                 },
                 {
                     "type": "mcq",
                     "question": "What is the purpose of RAG?",
                     "options": [
-                        "To combine retrieval with AI generation for improved responses",
-                        "To store large datasets for future use",
-                        "To speed up data processing in AI",
-                        "To create training datasets"
+                        "To combine retrieval with AI generation for better answers",
+                        "To store datasets",
+                        "To speed up training",
+                        "To replace machine learning"
                     ],
                     "answer": 0,
-                    "explanation": "RAG combines retrieval with generation to produce more accurate and relevant AI outputs."
+                    "explanation": "RAG improves responses by combining retrieved information with generated output."
                 },
                 {
                     "type": "next",
@@ -184,28 +182,28 @@
             "steps": [
                 {
                     "type": "teach",
-                    "text": "XAI refers to methods and models in AI that provide transparent and understandable explanations of AI decision-making processes."
+                    "text": "XAI refers to methods that make AI decisions understandable to humans, improving trust and transparency."
                 },
                 {
                     "type": "fill",
-                    "before": "XAI refers to AI systems that provide ________ explanations of decision-making.",
-                    "after": "",
+                    "before": "XAI makes AI decisions more",
+                    "after": ".",
                     "answers": [
-                        "transparent"
+                        "understandable"
                     ],
-                    "retryPrompt": "XAI is all about making AI decision-making ________.",
+                    "retryPrompt": "XAI makes AI decisions more ______.",
                     "retryAnswers": [
-                        "transparent"
+                        "understandable"
                     ]
                 },
                 {
                     "type": "fill",
-                    "before": "XAI helps AI systems offer understandable explanations for their",
-                    "after": "decisions.",
+                    "before": "XAI helps humans understand AI",
+                    "after": ".",
                     "answers": [
                         "decisions"
                     ],
-                    "retryPrompt": "XAI helps AI systems explain their ________.",
+                    "retryPrompt": "XAI helps humans understand AI ______.",
                     "retryAnswers": [
                         "decisions"
                     ]
@@ -214,13 +212,13 @@
                     "type": "mcq",
                     "question": "What does XAI stand for?",
                     "options": [
-                        "Extensive AI",
-                        "Explainable AI",
                         "Extended AI",
-                        "Exclusive AI"
+                        "Explainable AI",
+                        "External AI",
+                        "Expert AI"
                     ],
                     "answer": 1,
-                    "explanation": "XAI stands for Explainable AI, which aims to make AI decisions more transparent and understandable."
+                    "explanation": "XAI stands for Explainable AI, which focuses on making AI decisions clear and understandable."
                 },
                 {
                     "type": "next",
@@ -230,48 +228,48 @@
             ]
         },
         {
-            "id": "ai-ethics",
-            "title": "AI Ethics",
+            "id": "ml",
+            "title": "ML (Machine Learning)",
             "steps": [
                 {
                     "type": "teach",
-                    "text": "AI Ethics is a field concerned with the ethical implications of AI technologies and how they affect individuals, society, and the environment."
+                    "text": "Machine Learning (ML) is a core area of AI where systems learn from data to recognize patterns and make predictions without being explicitly programmed."
                 },
                 {
                     "type": "fill",
-                    "before": "AI Ethics is concerned with the ________ implications of AI technologies.",
-                    "after": "",
+                    "before": "Machine Learning systems learn from",
+                    "after": ".",
                     "answers": [
-                        "ethical"
+                        "data"
                     ],
-                    "retryPrompt": "AI Ethics focuses on the ________ consequences of AI technology.",
+                    "retryPrompt": "ML systems learn from ______.",
                     "retryAnswers": [
-                        "ethical"
+                        "data"
                     ]
                 },
                 {
                     "type": "fill",
-                    "before": "AI Ethics aims to ensure AI systems are designed with fairness, transparency, and",
-                    "after": "accountability.",
+                    "before": "ML finds patterns in",
+                    "after": "to make predictions.",
                     "answers": [
-                        "accountability"
+                        "data"
                     ],
-                    "retryPrompt": "AI Ethics ensures fairness, transparency, and ________ in AI systems.",
+                    "retryPrompt": "ML finds patterns in ______.",
                     "retryAnswers": [
-                        "accountability"
+                        "data"
                     ]
                 },
                 {
                     "type": "mcq",
-                    "question": "What is AI Ethics about?",
+                    "question": "What is Machine Learning primarily used for?",
                     "options": [
-                        "Improving AI performance",
-                        "Designing AI for fairness, transparency, and accountability",
-                        "Building AI systems",
-                        "Optimizing AI for speed"
+                        "Writing code manually",
+                        "Recognizing patterns in data",
+                        "Replacing databases",
+                        "Designing hardware"
                     ],
                     "answer": 1,
-                    "explanation": "AI Ethics is focused on ensuring fairness, transparency, and accountability in AI systems."
+                    "explanation": "Machine Learning identifies patterns in data and uses them to make predictions or decisions."
                 },
                 {
                     "type": "next",
@@ -283,6 +281,7 @@
         {
             "id": "final-recall-check",
             "title": "Final Recall Check",
+            "shuffleSteps": true,
             "steps": [
                 {
                     "type": "mcq",
@@ -310,6 +309,42 @@
                 },
                 {
                     "type": "mcq",
+                    "question": "Which acronym relates to processing human language?",
+                    "options": [
+                        "GAN",
+                        "NLP",
+                        "RAG",
+                        "ML"
+                    ],
+                    "answer": 1,
+                    "explanation": "NLP focuses on processing human language."
+                },
+                {
+                    "type": "fill",
+                    "before": "RAG combines retrieval with",
+                    "after": "to improve responses.",
+                    "answers": [
+                        "generation"
+                    ],
+                    "retryPrompt": "RAG combines retrieval with ______.",
+                    "retryAnswers": [
+                        "generation"
+                    ]
+                },
+                {
+                    "type": "mcq",
+                    "question": "Which term focuses on making AI decisions understandable?",
+                    "options": [
+                        "GAN",
+                        "ML",
+                        "XAI",
+                        "RAG"
+                    ],
+                    "answer": 2,
+                    "explanation": "XAI makes AI decisions more understandable."
+                },
+                {
+                    "type": "mcq",
                     "question": "What does GAN stand for?",
                     "options": [
                         "Generative Adversarial Network",
@@ -319,6 +354,42 @@
                     ],
                     "answer": 0,
                     "explanation": "GAN stands for Generative Adversarial Network."
+                },
+                {
+                    "type": "fill",
+                    "before": "Machine Learning systems learn patterns from",
+                    "after": ".",
+                    "answers": [
+                        "data"
+                    ],
+                    "retryPrompt": "ML systems learn from ______.",
+                    "retryAnswers": [
+                        "data"
+                    ]
+                },
+                {
+                    "type": "mcq",
+                    "question": "Which term improves AI responses by using external data?",
+                    "options": [
+                        "ML",
+                        "GAN",
+                        "RAG",
+                        "XAI"
+                    ],
+                    "answer": 2,
+                    "explanation": "RAG combines retrieval with generation."
+                },
+                {
+                    "type": "mcq",
+                    "question": "Which model uses a generator and discriminator?",
+                    "options": [
+                        "RAG",
+                        "GAN",
+                        "ML",
+                        "XAI"
+                    ],
+                    "answer": 1,
+                    "explanation": "GANs use a generator and discriminator."
                 },
                 {
                     "type": "next",
