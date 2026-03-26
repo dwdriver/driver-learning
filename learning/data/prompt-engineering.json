@@ -1,0 +1,428 @@
+{
+  "slug": "prompt-engineering",
+  "title": "Prompting Foundations",
+  "category": "Artificial Intelligence",
+  "description": "Learn how to evaluate prompts, compare alternatives, and choose the best prompt for a specific goal.",
+  "lessons": [
+    {
+      "id": "intro",
+      "title": "What You'll Learn",
+      "summary": "See how this course will help you recognize, compare, and choose better prompts.",
+      "steps": [
+        {
+          "type": "teach",
+          "text": "Prompts guide AI behavior. Small wording changes can produce very different results."
+        },
+        {
+          "type": "teach",
+          "text": "In this course, you'll learn to recognize what a prompt is, discriminate between stronger and weaker prompts, and choose the best prompt for a specific goal."
+        },
+        {
+          "type": "mcq",
+          "question": "What skill will you develop in this course?",
+          "options": [
+            "Writing longer prompts",
+            "Evaluating which prompt best fits a specific goal",
+            "Training AI models",
+            "Memorizing AI terminology"
+          ],
+          "answer": 1,
+          "explanation": "This course focuses on choosing and improving prompts based on the result you want."
+        },
+        {
+          "type": "mcq",
+          "question": "Which activity best reflects this skill?",
+          "options": [
+            "Rewriting prompts to be longer",
+            "Choosing between multiple prompts based on the desired result",
+            "Memorizing definitions of AI terms",
+            "Avoiding constraints in prompts"
+          ],
+          "answer": 1,
+          "explanation": "The goal is to judge which prompt fits the task best, not just to make prompts longer."
+        },
+        {
+          "type": "next",
+          "title": "Start",
+          "text": "Let's begin with the basic idea of a prompt."
+        }
+      ]
+    },
+    {
+      "id": "what-is-a-prompt",
+      "title": "What is a Prompt?",
+      "summary": "Learn what a prompt is and how it influences the structure and usefulness of AI output.",
+      "steps": [
+        {
+          "type": "teach",
+          "text": "A prompt is the input you give an AI system to guide its response."
+        },
+        {
+          "type": "teach",
+          "text": "A prompt influences what is answered, how it is structured, and how useful the result will be."
+        },
+        {
+          "type": "mcq",
+          "question": "Which best describes a prompt?",
+          "options": [
+            "A dataset used to train AI",
+            "The input used to guide an AI response",
+            "A stored output from a previous interaction",
+            "A system configuration"
+          ],
+          "answer": 1,
+          "explanation": "A prompt is the input that guides the AI's output."
+        },
+        {
+          "type": "mcq",
+          "question": "Which prompt most strongly influences how the answer is structured?",
+          "options": [
+            "Explain machine learning",
+            "Explain machine learning simply",
+            "Provide a step-by-step explanation of machine learning",
+            "Explain why machine learning is important"
+          ],
+          "answer": 2,
+          "explanation": "Asking for a step-by-step explanation directly influences the structure of the response."
+        },
+        {
+          "type": "next",
+          "title": "Next Lesson",
+          "text": "Now let's look at clarity and why mixed-intent prompts often fail."
+        }
+      ]
+    },
+    {
+      "id": "clarity-single-intent",
+      "title": "Clarity: Single Intent",
+      "summary": "See why single-intent prompts are easier for AI to answer clearly and usefully.",
+      "steps": [
+        {
+          "type": "teach",
+          "text": "Clear prompts focus on one defined outcome. Unclear prompts often mix multiple goals or unrelated questions."
+        },
+        {
+          "type": "teach",
+          "text": "When a prompt asks for explanation, judgment, and advice all at once, the AI may produce a response that feels scattered or confusing."
+        },
+        {
+          "type": "teach",
+          "text": "Some prompts look reasonable at first glance but still mix too many intentions. We'll explore this more deeply later."
+        },
+        {
+          "type": "mcq",
+          "question": "Which prompt is the clearest?",
+          "options": [
+            "Explain business risk and how to reduce it and whether it is good or bad",
+            "Explain business risk",
+            "Explain three types of business risk",
+            "Explain three types of business risk and how to reduce each"
+          ],
+          "answer": 3,
+          "explanation": "This prompt has a clear task and a clear scope without mixing in unrelated judgments."
+        },
+        {
+          "type": "mcq",
+          "question": "Which prompt is most likely to produce a confusing response?",
+          "options": [
+            "Explain inflation",
+            "Explain causes of inflation",
+            "Explain inflation and how to respond to it personally and whether it is good or bad",
+            "Explain inflation in one paragraph"
+          ],
+          "answer": 2,
+          "explanation": "This prompt combines explanation, personal advice, and judgment in one request."
+        },
+        {
+          "type": "mcq",
+          "question": "Goal: You want actionable advice. Which prompt is best?",
+          "options": [
+            "Explain business risk",
+            "Explain types of business risk",
+            "Explain three business risks",
+            "Explain three types of business risk and how to reduce each"
+          ],
+          "answer": 3,
+          "explanation": "If the goal is action, the prompt should include both the risks and what to do about them."
+        },
+        {
+          "type": "next",
+          "title": "Next Lesson",
+          "text": "Next, we'll look at specificity and why targeted prompts usually produce more useful answers."
+        }
+      ]
+    },
+    {
+      "id": "specificity-targeted-prompts",
+      "title": "Specificity: Broad vs Targeted",
+      "summary": "Learn how added specificity reduces guesswork and produces more actionable answers.",
+      "steps": [
+        {
+          "type": "teach",
+          "text": "Specific prompts reduce ambiguity and guide the AI toward a more useful response."
+        },
+        {
+          "type": "teach",
+          "text": "Broad prompts may still work, but they often produce generic answers because the AI has to guess what level, domain, or use case you really want."
+        },
+        {
+          "type": "mcq",
+          "question": "Which prompt is most specific?",
+          "options": [
+            "Explain AI",
+            "Explain AI in business",
+            "Explain how AI is used in retail inventory management",
+            "Explain how AI affects society"
+          ],
+          "answer": 2,
+          "explanation": "This prompt narrows the topic to a specific business use case."
+        },
+        {
+          "type": "mcq",
+          "question": "Which prompt is too broad to be highly useful?",
+          "options": [
+            "Explain Python",
+            "Explain Python for beginners",
+            "Explain how to write a Python loop",
+            "Explain how to write a Python loop for processing orders"
+          ],
+          "answer": 0,
+          "explanation": "'Explain Python' is broad enough that the response could go in many directions."
+        },
+        {
+          "type": "mcq",
+          "question": "Goal: You want a practical coding example. Which prompt is best?",
+          "options": [
+            "Explain Python",
+            "Explain Python basics",
+            "Explain loops in Python",
+            "Show how to write a Python loop that processes a list of customer orders"
+          ],
+          "answer": 3,
+          "explanation": "The best prompt matches the practical goal with a concrete use case."
+        },
+        {
+          "type": "next",
+          "title": "Next Lesson",
+          "text": "Now let's see how constraints can help\u2014or hurt\u2014depending on how they are used."
+        }
+      ]
+    },
+    {
+      "id": "constraints-helpful-vs-harmful",
+      "title": "Constraints: Helpful vs Harmful",
+      "summary": "Understand how constraints can improve clarity\u2014or become so restrictive that they reduce usefulness.",
+      "steps": [
+        {
+          "type": "teach",
+          "text": "Constraints can improve clarity by limiting length, scope, or structure."
+        },
+        {
+          "type": "teach",
+          "text": "Helpful constraints guide the answer. Harmful constraints force oversimplified or low-information results."
+        },
+        {
+          "type": "teach",
+          "text": "Later, we'll go deeper into prompts that force overly simple answers and why that matters."
+        },
+        {
+          "type": "mcq",
+          "question": "Which prompt uses helpful constraints?",
+          "options": [
+            "Explain climate change",
+            "List three causes of climate change",
+            "Explain climate change in one sentence",
+            "Explain everything about climate change"
+          ],
+          "answer": 1,
+          "explanation": "This prompt narrows the answer in a useful way without making it meaningless."
+        },
+        {
+          "type": "mcq",
+          "question": "Which prompt is overly restrictive?",
+          "options": [
+            "Explain renewable energy",
+            "List three benefits of renewable energy",
+            "Explain renewable energy in one sentence",
+            "Explain how renewable energy impacts the economy"
+          ],
+          "answer": 2,
+          "explanation": "A one-sentence limit is often too restrictive for a useful explanation."
+        },
+        {
+          "type": "mcq",
+          "question": "Goal: You want a quick but useful summary. Which prompt is best?",
+          "options": [
+            "Explain renewable energy",
+            "List three benefits of renewable energy",
+            "Explain renewable energy in one sentence",
+            "Explain renewable energy in full detail"
+          ],
+          "answer": 1,
+          "explanation": "This prompt balances brevity and usefulness."
+        },
+        {
+          "type": "next",
+          "title": "Next Lesson",
+          "text": "Next, we'll look at how to control the structure of the answer itself."
+        }
+      ]
+    },
+    {
+      "id": "output-format",
+      "title": "Output Format: Control the Structure",
+      "summary": "Use lists, steps, and comparisons to shape the structure of AI output.",
+      "steps": [
+        {
+          "type": "teach",
+          "text": "You can guide AI output by specifying a format such as a list, a sequence of steps, or a comparison."
+        },
+        {
+          "type": "teach",
+          "text": "Format control makes answers easier to use because it shapes the response before it is generated."
+        },
+        {
+          "type": "mcq",
+          "question": "Which prompt controls output format?",
+          "options": [
+            "Explain project planning",
+            "Explain project planning simply",
+            "Provide a step-by-step plan for project planning",
+            "Explain why project planning matters"
+          ],
+          "answer": 2,
+          "explanation": "Requesting a step-by-step plan directly controls the structure of the answer."
+        },
+        {
+          "type": "mcq",
+          "question": "Which prompt does NOT effectively control structure?",
+          "options": [
+            "Provide a list of 5 planning steps",
+            "Compare planning and execution",
+            "Explain planning in a structured format",
+            "Explain project planning"
+          ],
+          "answer": 3,
+          "explanation": "This prompt gives no structure at all."
+        },
+        {
+          "type": "mcq",
+          "question": "Goal: You want a comparison. Which prompt is best?",
+          "options": [
+            "Explain project planning",
+            "Explain planning in detail",
+            "Compare project planning and execution in two sentences",
+            "List planning steps"
+          ],
+          "answer": 2,
+          "explanation": "The prompt directly asks for the format and the goal: a quick comparison."
+        },
+        {
+          "type": "next",
+          "title": "Next Lesson",
+          "text": "Now we'll combine the earlier ideas and practice choosing the best overall prompt."
+        }
+      ]
+    },
+    {
+      "id": "combining-skills",
+      "title": "Combining Skills",
+      "summary": "Practice combining clarity, specificity, constraints, and format to choose the strongest prompt overall.",
+      "steps": [
+        {
+          "type": "teach",
+          "text": "Good prompts often combine multiple strengths: they are clear, specific, appropriately constrained, and structured for the goal."
+        },
+        {
+          "type": "teach",
+          "text": "The best prompt is not always the shortest or the longest. It is the one that best fits the intended result."
+        },
+        {
+          "type": "mcq",
+          "question": "Which prompt combines multiple good practices?",
+          "options": [
+            "Explain health",
+            "Explain cardiovascular health",
+            "List three ways to improve cardiovascular health",
+            "Provide a step-by-step 30-day plan to improve cardiovascular health"
+          ],
+          "answer": 3,
+          "explanation": "This prompt is specific, structured, and action-oriented."
+        },
+        {
+          "type": "mcq",
+          "question": "Which prompt is weakest overall?",
+          "options": [
+            "Explain renewable energy",
+            "Explain benefits of renewable energy",
+            "Explain renewable energy in one sentence",
+            "Explain how renewable energy works"
+          ],
+          "answer": 2,
+          "explanation": "This prompt is overly restrictive and likely to produce an undersized answer."
+        },
+        {
+          "type": "mcq",
+          "question": "Goal: Quick comparison. Which prompt is best?",
+          "options": [
+            "Explain AI and machine learning",
+            "Compare AI and machine learning in two sentences",
+            "Explain AI in detail",
+            "Explain machine learning in detail"
+          ],
+          "answer": 1,
+          "explanation": "The prompt directly matches the goal and keeps the answer short and structured."
+        },
+        {
+          "type": "next",
+          "title": "Final Lesson",
+          "text": "Let's wrap up with the next step in improving your prompting skill."
+        }
+      ]
+    },
+    {
+      "id": "what-to-do-next",
+      "title": "What To Do Next",
+      "summary": "See how refinement and prompt debugging build on this foundation.",
+      "steps": [
+        {
+          "type": "teach",
+          "text": "You now have a foundation for evaluating prompts. The next step is learning how to refine prompts based on weak or unexpected results."
+        },
+        {
+          "type": "teach",
+          "text": "Later courses will go deeper into prompt engineering, prompt debugging, misleading constraints, and more advanced edge cases."
+        },
+        {
+          "type": "mcq",
+          "question": "What improves prompting skill most?",
+          "options": [
+            "Writing longer prompts",
+            "Practicing refinement based on results",
+            "Avoiding constraints",
+            "Memorizing terms"
+          ],
+          "answer": 1,
+          "explanation": "Prompting improves through testing, observing results, and refining structure and intent."
+        },
+        {
+          "type": "mcq",
+          "question": "What should you do if a prompt produces weak results?",
+          "options": [
+            "Accept the answer",
+            "Rewrite the prompt with better structure and intent",
+            "Make it shorter",
+            "Remove constraints"
+          ],
+          "answer": 1,
+          "explanation": "Weak results are usually a cue to refine the prompt, not to give up on the task."
+        },
+        {
+          "type": "next",
+          "title": "Complete",
+          "text": "You've finished Prompting Foundations. Next, we'll go deeper into refinement, debugging, and stronger prompt design."
+        }
+      ]
+    }
+  ]
+}

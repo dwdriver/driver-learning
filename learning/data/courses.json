@@ -73,14 +73,15 @@
     },
     {
       "slug": "prompt-engineering",
-      "title": "Prompt Engineering",
+      "title": "Prompt Foundations",
       "category": "Artificial Intelligence",
       "difficulty": "beginner",
-      "status": "coming-soon",
-      "description": "Learn how to structure prompts for clearer, more reliable AI responses.",
+      "status": "available",
+      "note": "new",
+      "description": "Learn how to evaluate prompts, compare alternatives, and choose the best prompt for a specific goal.",
       "cardCount": 0,
-      "lessonCount": 0,
-      "estimatedMinutes": 0
+      "lessonCount": 8,
+      "estimatedMinutes": 18
     },
     {
       "slug": "retrieval-augmented-generation",
