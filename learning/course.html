@@ -90,6 +90,9 @@
       // ADD STEP 2 CODE HERE
       // ==============================
 
+      document.getElementById('course-category').textContent = course.category || '';
+      document.getElementById('course-minutes').textContent = course.estimatedMinutes || '';
+
       const lessonRes = await fetch(`./data/${slug}.json`);
       const lessonData = await lessonRes.json();
 
@@ -108,7 +111,7 @@
 
         item.innerHTML = `
         <h3>Lesson ${index + 1}: ${lesson.title}</h3>
-        <p>${lesson.summary}</p>
+        ${lesson.summary ? `<p>${lesson.summary}</p>` : ''}
         <a class="button secondary"
            href="./lesson.html?course=${slug}&lesson=${lesson.id}">
            Open Lesson
