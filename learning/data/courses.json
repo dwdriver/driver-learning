@@ -61,6 +61,18 @@
       "estimatedMinutes": 10
     },
     {
+      "slug": "ai-acronyms-part-2",
+      "title": "AI Acronyms Everyone Should Know — Part 2",
+      "category": "Artificial Intelligence",
+      "difficulty": "beginner",
+      "status": "available",
+      "note": "New - Updated May 2026",
+      "description": "Expand your understanding of modern AI systems with practical concepts like LLMs, RLHF, APIs, transformers, and embeddings.",
+      "cardCount": 0,
+      "lessonCount": 5,
+      "estimatedMinutes": 12
+    },
+    {
       "slug": "generative-ai-foundations",
       "title": "Generative AI Foundations",
       "category": "Artificial Intelligence",
@@ -77,7 +89,7 @@
       "category": "Artificial Intelligence",
       "difficulty": "beginner",
       "status": "available",
-      "note": "new",
+      "note": "",
       "description": "Learn how to evaluate prompts, compare alternatives, and choose the best prompt for a specific goal.",
       "cardCount": 0,
       "lessonCount": 8,

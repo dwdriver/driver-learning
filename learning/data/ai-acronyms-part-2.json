@@ -1,0 +1,414 @@
+{
+    "slug": "ai-acronyms-part-2",
+    "title": "AI Acronyms Everyone Should Know — Part 2",
+    "category": "Artificial Intelligence",
+    "description": "Learn and retain 5 more practical AI acronyms using active recall and spaced repetition.",
+    "lessons": [
+        {
+            "id": "intro",
+            "title": "What You'll Learn",
+            "steps": [
+                {
+                    "type": "teach",
+                    "text": "You're about to learn 5 more important AI acronyms and concepts used in modern AI systems."
+                },
+                {
+                    "type": "teach",
+                    "text": "This lesson builds on the first AI acronyms lesson by focusing on terms connected to language models, feedback, APIs, transformers, and embeddings."
+                },
+                {
+                    "type": "next",
+                    "title": "Start",
+                    "text": "Let's begin with the first term."
+                }
+            ]
+        },
+        {
+            "id": "llm",
+            "title": "LLM (Large Language Model)",
+            "steps": [
+                {
+                    "type": "teach",
+                    "text": "An LLM is a Large Language Model trained on massive amounts of text so it can understand, summarize, translate, answer questions, and generate language."
+                },
+                {
+                    "type": "fill",
+                    "before": "LLM stands for Large Language",
+                    "after": ".",
+                    "answers": [
+                        "Model"
+                    ],
+                    "retryPrompt": "LLM stands for Large Language ______.",
+                    "retryAnswers": [
+                        "Model"
+                    ]
+                },
+                {
+                    "type": "mcq",
+                    "question": "What is an LLM primarily designed to work with?",
+                    "options": [
+                        "Human language",
+                        "Network cables",
+                        "Hard-drive partitions",
+                        "Screen resolution"
+                    ],
+                    "answer": 0,
+                    "explanation": "An LLM is designed to understand and generate human language."
+                },
+                {
+                    "type": "fill",
+                    "before": "Large Language Models are trained on large amounts of",
+                    "after": ".",
+                    "answers": [
+                        "text"
+                    ],
+                    "retryPrompt": "LLMs are trained on large amounts of ______.",
+                    "retryAnswers": [
+                        "text"
+                    ]
+                },
+                {
+                    "type": "next",
+                    "title": "Next Term",
+                    "text": "Now let's look at how human feedback can help improve AI behavior."
+                }
+            ]
+        },
+        {
+            "id": "rlhf",
+            "title": "RLHF (Reinforcement Learning from Human Feedback)",
+            "steps": [
+                {
+                    "type": "teach",
+                    "text": "RLHF means Reinforcement Learning from Human Feedback. It helps improve AI behavior by using human feedback to guide model responses toward preferred outcomes."
+                },
+                {
+                    "type": "mcq",
+                    "question": "What does RLHF use to improve AI behavior?",
+                    "options": [
+                        "Human feedback",
+                        "Larger monitors",
+                        "File compression",
+                        "Network routing"
+                    ],
+                    "answer": 0,
+                    "explanation": "RLHF uses human feedback to help guide AI responses toward better behavior."
+                },
+                {
+                    "type": "fill",
+                    "before": "RLHF uses human",
+                    "after": "to improve AI responses.",
+                    "answers": [
+                        "feedback"
+                    ],
+                    "retryPrompt": "RLHF uses human ______ to improve responses.",
+                    "retryAnswers": [
+                        "feedback"
+                    ]
+                },
+                {
+                    "type": "fill",
+                    "before": "The HF in RLHF stands for Human",
+                    "after": ".",
+                    "answers": [
+                        "Feedback"
+                    ],
+                    "retryPrompt": "RLHF means Reinforcement Learning from Human ______.",
+                    "retryAnswers": [
+                        "Feedback"
+                    ]
+                },
+                {
+                    "type": "next",
+                    "title": "Next Term",
+                    "text": "Next, let's review a practical acronym used when software systems communicate."
+                }
+            ]
+        },
+        {
+            "id": "api",
+            "title": "API (Application Programming Interface)",
+            "steps": [
+                {
+                    "type": "teach",
+                    "text": "An API is an Application Programming Interface. It allows one software system to request data or services from another system using defined rules."
+                },
+                {
+                    "type": "fill",
+                    "before": "API stands for Application Programming",
+                    "after": ".",
+                    "answers": [
+                        "Interface"
+                    ],
+                    "retryPrompt": "API stands for Application Programming ______.",
+                    "retryAnswers": [
+                        "Interface"
+                    ]
+                },
+                {
+                    "type": "fill",
+                    "before": "An API lets software systems",
+                    "after": "with each other.",
+                    "answers": [
+                        "communicate"
+                    ],
+                    "retryPrompt": "An API helps software systems ______.",
+                    "retryAnswers": [
+                        "communicate"
+                    ]
+                },
+                {
+                    "type": "mcq",
+                    "question": "What is the main purpose of an API?",
+                    "options": [
+                        "To let software systems communicate through defined rules",
+                        "To replace all databases",
+                        "To train a language model",
+                        "To increase screen brightness"
+                    ],
+                    "answer": 0,
+                    "explanation": "An API gives software systems a defined way to request data or services from each other."
+                },
+                {
+                    "type": "next",
+                    "title": "Next Term",
+                    "text": "Now let's move from system communication to the architecture behind many modern AI models."
+                }
+            ]
+        },
+        {
+            "id": "transformer",
+            "title": "Transformer",
+            "steps": [
+                {
+                    "type": "teach",
+                    "text": "A transformer is a neural network architecture used by many modern AI models. It is especially useful for understanding relationships between words, tokens, and context."
+                },
+                {
+                    "type": "mcq",
+                    "question": "What is a transformer in modern AI?",
+                    "options": [
+                        "A neural network architecture",
+                        "A database backup tool",
+                        "A file naming convention",
+                        "A power supply adapter"
+                    ],
+                    "answer": 0,
+                    "explanation": "A transformer is a neural network architecture used in many modern AI systems."
+                },
+                {
+                    "type": "fill",
+                    "before": "Transformers help models understand relationships between words, tokens, and",
+                    "after": ".",
+                    "answers": [
+                        "context"
+                    ],
+                    "retryPrompt": "Transformers help models understand relationships in ______.",
+                    "retryAnswers": [
+                        "context"
+                    ]
+                },
+                {
+                    "type": "fill",
+                    "before": "Many modern AI models are based on transformer",
+                    "after": ".",
+                    "answers": [
+                        "architecture"
+                    ],
+                    "retryPrompt": "A transformer is a type of neural network ______.",
+                    "retryAnswers": [
+                        "architecture"
+                    ]
+                },
+                {
+                    "type": "next",
+                    "title": "Next Term",
+                    "text": "Finally, let's look at how AI systems represent meaning numerically."
+                }
+            ]
+        },
+        {
+            "id": "embedding",
+            "title": "Embedding",
+            "steps": [
+                {
+                    "type": "teach",
+                    "text": "An embedding is a numerical representation of meaning. AI systems use embeddings to compare words, sentences, documents, or other data by similarity."
+                },
+                {
+                    "type": "fill",
+                    "before": "An embedding is a numerical representation of",
+                    "after": ".",
+                    "answers": [
+                        "meaning"
+                    ],
+                    "retryPrompt": "An embedding represents ______ numerically.",
+                    "retryAnswers": [
+                        "meaning"
+                    ]
+                },
+                {
+                    "type": "mcq",
+                    "question": "What do embeddings help AI systems compare?",
+                    "options": [
+                        "Similarity of meaning",
+                        "Monitor refresh rates",
+                        "Printer ink levels",
+                        "Keyboard shortcuts"
+                    ],
+                    "answer": 0,
+                    "explanation": "Embeddings help AI systems compare the similarity of meaning between pieces of data."
+                },
+                {
+                    "type": "fill",
+                    "before": "Embeddings help compare words, sentences, or documents by",
+                    "after": ".",
+                    "answers": [
+                        "similarity"
+                    ],
+                    "retryPrompt": "Embeddings are useful for comparing semantic ______.",
+                    "retryAnswers": [
+                        "similarity"
+                    ]
+                },
+                {
+                    "type": "next",
+                    "title": "Final Recall Check",
+                    "text": "Let's check how much you retained from this second set of AI acronyms and concepts."
+                }
+            ]
+        },
+        {
+            "id": "final-recall-check",
+            "title": "Final Recall Check",
+            "shuffleSteps": true,
+            "steps": [
+                {
+                    "type": "fill",
+                    "before": "LLM stands for Large Language",
+                    "after": ".",
+                    "answers": [
+                        "Model"
+                    ],
+                    "retryPrompt": "LLM means Large Language ______.",
+                    "retryAnswers": [
+                        "Model"
+                    ]
+                },
+                {
+                    "type": "mcq",
+                    "question": "Which term refers to a model trained on large amounts of text to generate language?",
+                    "options": [
+                        "LLM",
+                        "API",
+                        "RLHF",
+                        "Embedding"
+                    ],
+                    "answer": 0,
+                    "explanation": "An LLM is a Large Language Model trained on large amounts of text."
+                },
+                {
+                    "type": "fill",
+                    "before": "RLHF uses human",
+                    "after": "to improve AI behavior.",
+                    "answers": [
+                        "feedback"
+                    ],
+                    "retryPrompt": "RLHF uses human ______.",
+                    "retryAnswers": [
+                        "feedback"
+                    ]
+                },
+                {
+                    "type": "mcq",
+                    "question": "What does API stand for?",
+                    "options": [
+                        "Application Programming Interface",
+                        "Automated Prompt Input",
+                        "Artificial Processing Index",
+                        "Application Pattern Instruction"
+                    ],
+                    "answer": 0,
+                    "explanation": "API stands for Application Programming Interface."
+                },
+                {
+                    "type": "fill",
+                    "before": "An API helps software systems",
+                    "after": "with each other.",
+                    "answers": [
+                        "communicate"
+                    ],
+                    "retryPrompt": "APIs let software systems ______.",
+                    "retryAnswers": [
+                        "communicate"
+                    ]
+                },
+                {
+                    "type": "mcq",
+                    "question": "Which term refers to a neural network architecture used by many modern AI models?",
+                    "options": [
+                        "Transformer",
+                        "Embedding",
+                        "API",
+                        "XAI"
+                    ],
+                    "answer": 0,
+                    "explanation": "A transformer is a neural network architecture used in many modern AI systems."
+                },
+                {
+                    "type": "fill",
+                    "before": "Transformers help models understand words, tokens, and",
+                    "after": ".",
+                    "answers": [
+                        "context"
+                    ],
+                    "retryPrompt": "Transformers help models understand ______.",
+                    "retryAnswers": [
+                        "context"
+                    ]
+                },
+                {
+                    "type": "mcq",
+                    "question": "What is an embedding?",
+                    "options": [
+                        "A numerical representation of meaning",
+                        "A password reset process",
+                        "A type of computer monitor",
+                        "A database deletion command"
+                    ],
+                    "answer": 0,
+                    "explanation": "An embedding is a numerical representation of meaning."
+                },
+                {
+                    "type": "fill",
+                    "before": "Embeddings help compare meaning by",
+                    "after": ".",
+                    "answers": [
+                        "similarity"
+                    ],
+                    "retryPrompt": "Embeddings help compare semantic ______.",
+                    "retryAnswers": [
+                        "similarity"
+                    ]
+                },
+                {
+                    "type": "mcq",
+                    "question": "Which acronym refers to improving AI behavior using human feedback?",
+                    "options": [
+                        "API",
+                        "RLHF",
+                        "LLM",
+                        "GAN"
+                    ],
+                    "answer": 1,
+                    "explanation": "RLHF stands for Reinforcement Learning from Human Feedback."
+                },
+                {
+                    "type": "next",
+                    "title": "Complete",
+                    "text": "Good job! You've completed Part 2 of AI Acronyms Everyone Should Know. You can return to the catalog or take the test again for more practice."
+                }
+            ]
+        }
+    ]
+}

@@ -66,6 +66,7 @@
   </div>
   <script>
     function formatStatusLabel(course) {
+      if (course.status === 'available' && course.note) return `${course.note} · Start Course`;
       if (course.status === 'available') return 'Start Course';
       if (course.status === 'in-progress') return 'In Progress';
       return 'Coming Soon';
